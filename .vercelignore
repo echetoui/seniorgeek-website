@@ -1,0 +1,50 @@
+# Git files
+.git
+.gitignore
+.github
+
+# Node modules
+node_modules
+
+# Build outputs (Vercel will generate)
+dist
+build
+
+# Development files
+.astro
+
+# Documentation (no need to deploy)
+*.md
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test files
+playwright-report
+test-results
+tests
+
+# Other
+*.log

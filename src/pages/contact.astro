@@ -1,0 +1,238 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/ui/Card.astro';
+
+---
+
+<PageLayout
+  title="Contactez SeniorGeek - Consultation gratuite à Quebec"
+  description="Contactez SeniorGeek pour consultation gratuite. Accompagnement numérique pour aînés du Québec. Appel, email, formulaire contact. Services sécurité digitale."
+  heroTitle="Nous contacter"
+  heroSubtitle="Nous sommes disponibles pour vous aider - Contact gratuit pour aînés et résidences du Québec"
+>
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <Card title="Appel gratuit" description="Appelez-nous pour une consultation de quinze minutes">
+          <a href="tel:+15141234567" class="text-blue-600 font-bold hover:text-blue-800">
+            +1 (514) XXX-XXXX
+          </a>
+        </Card>
+
+        <Card title="Email" description="Envoyez-nous vos questions">
+          <a href="mailto:contact@seniorgeek.ca" class="text-blue-600 font-bold hover:text-blue-800">
+            contact@seniorgeek.ca
+          </a>
+        </Card>
+
+        <Card title="Urgence" description="Problème immédiat de sécurité numérique">
+          <a href="tel:+15141234567" class="text-orange-600 font-bold hover:text-orange-800">
+            Appeler immédiatement
+          </a>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Formulaire de contact</h2>
+        <p class="text-lg text-gray-600">
+          Remplissez ce court formulaire et nous vous recontacterons rapidement. Aucune obligation.
+        </p>
+      </div>
+
+      <form class="space-y-6" action="/api/contact" method="POST" name="contact-optimized" id="contactForm">
+        <!-- Segmentation: Profile Type -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-900 mb-4">Je suis</label>
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition-colors" for="profile-aine">
+              <input type="radio" id="profile-aine" name="profile" value="aine" required class="w-4 h-4 text-blue-600" />
+              <span class="flex-1">
+                <span class="font-semibold text-gray-900">👵 Un aîné</span>
+                <span class="text-sm text-gray-600 block">Je cherche à apprendre ou améliorer ma sécurité numérique</span>
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-purple-600 hover:bg-purple-50 transition-colors" for="profile-proche">
+              <input type="radio" id="profile-proche" name="profile" value="proche" class="w-4 h-4 text-purple-600" />
+              <span class="flex-1">
+                <span class="font-semibold text-gray-900">👨‍👩‍👧‍👦 Un proche</span>
+                <span class="text-sm text-gray-600 block">Je veux protéger un aîné de ma famille</span>
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-green-600 hover:bg-green-50 transition-colors" for="profile-residence">
+              <input type="radio" id="profile-residence" name="profile" value="residence" class="w-4 h-4 text-green-600" />
+              <span class="flex-1">
+                <span class="font-semibold text-gray-900">🏛️ Une résidence</span>
+                <span class="text-sm text-gray-600 block">Je gère une résidence et veux former mes résidents</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Name Field -->
+        <div>
+          <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">
+            Votre nom ou celui de votre organisation *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Jean Dupont ou Résidence Soleil"
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          />
+        </div>
+
+        <!-- Email Field -->
+        <div>
+          <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
+            Votre email *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="jean@example.com"
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          />
+        </div>
+
+        <!-- Phone Field -->
+        <div>
+          <label for="phone" class="block text-sm font-semibold text-gray-900 mb-2">
+            Téléphone (optionnel)
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="(514) 123-4567"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          />
+        </div>
+
+        <!-- Message Field -->
+        <div>
+          <label for="message" class="block text-sm font-semibold text-gray-900 mb-2">
+            Votre message *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Décrivez brièvement ce que vous cherchez (ex: Je veux apprendre à reconnaître les arnaques, Je veux protéger ma mère...)"
+            required
+            rows="4"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Consent -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <label class="flex items-start gap-3 text-sm text-gray-700">
+            <input type="checkbox" name="consent" required class="w-4 h-4 mt-1 text-blue-600" />
+            <span>
+              J'accepte que SeniorGeek me recontacte pour répondre à ma demande. <span class="text-xs text-gray-600">Vos données seront sécurisées et ne seront jamais partagées avec des tiers.</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
+        >
+          Envoyer mon message
+        </button>
+
+        <p class="text-sm text-gray-600 text-center">
+          * Champs obligatoires - Réponse garantie en 24h
+        </p>
+      </form>
+
+      <!-- Success Message (Hidden by default, shown with JavaScript) -->
+      <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 rounded-lg border-2 border-green-600">
+        <div class="flex items-start gap-3">
+          <span class="text-3xl">✓</span>
+          <div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2">Merci pour votre message!</h3>
+            <p class="text-gray-700">
+              Nous avons reçu votre demande. Notre équipe vous recontactera dans les 24 heures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {
+          profile: formData.get('profile'),
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+          consent: formData.get('consent') === 'on'
+        };
+
+        try {
+          // In production, this would submit to an API endpoint
+          // For now, we'll just show the success message
+          console.log('Form data:', data);
+
+          // Hide form and show success message
+          form.style.display = 'none';
+          successMessage.classList.remove('hidden');
+
+          // Optionally scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+      });
+    }
+  </script>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Nous répondons rapidement</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <p class="text-lg leading-relaxed">
+          Nous répondons à tous les messages dans les délais suivants :
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <p class="font-semibold text-gray-900">Appels :</p>
+          <p>Réponse immédiate pendant les heures de bureau</p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <p class="font-semibold text-gray-900">Emails :</p>
+          <p>Réponse dans les 24 heures ouvrables</p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <p class="font-semibold text-gray-900">Formulaires :</p>
+          <p>Contact dans les 48 heures</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

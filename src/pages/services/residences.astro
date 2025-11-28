@@ -1,0 +1,308 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CallToAction from '../../components/widgets/CallToAction.astro';
+import Card from '../../components/ui/Card.astro';
+import serviceImageAvif from '../../assets/images/service-residence-workshop.avif';
+import serviceImageWebp from '../../assets/images/service-residence-workshop.webp';
+import serviceImage from '../../assets/images/service-residence-workshop.png';
+
+const services = [
+  {
+    title: "📚 Ateliers de prévention",
+    description: "Sessions de groupe pour les résidents sur la reconnaissance des arnaques et la sécurité numérique",
+    items: [
+      "📅 Deux ateliers par mois",
+      "👥 Groupes de cinq à quinze résidents",
+      "⏰ Durée d'une heure",
+      "🎯 Thèmes variés et pertinents"
+    ]
+  },
+  {
+    title: "🎓 Séances individuelles",
+    description: "Accompagnement personnel pour les résidents ayant des besoins spécifiques",
+    items: [
+      "🏠 Visite dans la chambre du résident",
+      "📊 Adapté à son niveau technologique",
+      "⏱️ Jusqu'à une heure par séance",
+      "👁️ Suivi au besoin"
+    ]
+  },
+  {
+    title: "📄 Matériel imprimé",
+    description: "Ressources prêtes à utiliser que vos résidents peuvent consulter quand ils veulent",
+    items: [
+      "🔍 Guides de sécurité en grands caractères",
+      "⚠️ Affichage des signaux d'arnaque",
+      "📔 Petit carnet de conseils pratiques",
+      "🎨 Personnalisé au nom de votre résidence"
+    ]
+  },
+  {
+    title: "📆 Programme mensuel",
+    description: "Un calendrier thématique complet couvrant tous les aspects de la sécurité numérique",
+    items: [
+      "🎯 Thème principal chaque mois",
+      "🔗 Ateliers alignés avec le thème",
+      "📢 Matériel de communication",
+      "🔧 Adaptation possible à vos besoins"
+    ]
+  }
+];
+
+const staffBenefits = [
+  {
+    title: "👨‍🏫 Formation du personnel",
+    description: "Votre équipe apprend comment aider les résidents de façon efficace"
+  },
+  {
+    title: "🛡️ Réduction des risques",
+    description: "Moins d'incidents de sécurité numérique parmi vos résidents"
+  },
+  {
+    title: "😊 Amélioration du bien-être",
+    description: "Les résidents se sentent plus confiants et indépendants numériquement"
+  },
+  {
+    title: "⭐ Promotion de votre service",
+    description: "Un avantage compétitif pour attirer les familles conscientes de la sécurité"
+  }
+];
+---
+
+<PageLayout
+  title="Services de sécurité numérique pour résidences seniors à Quebec | SeniorGeek"
+  description="Programmes complets de sécurité numérique pour résidences et CHSLD du Québec. Ateliers, matériel imprimé et formations pour résidents aînés."
+  heroTitle="Services pour les résidences"
+  heroSubtitle="Protégez vos résidents avec des ateliers et ressources complètes - Solutions pour CHSLD et résidences du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-lg overflow-hidden shadow-lg bg-white border border-white" style="background-color: #FFFFFF;">
+        <picture>
+          <source srcset={serviceImageAvif.src} type="image/avif" />
+          <source srcset={serviceImageWebp.src} type="image/webp" />
+          <img src={serviceImage.src} alt="Atelier animé en groupe dans une résidence" class="w-full h-auto object-cover" style="background-color: #FFFFFF;" />
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Nos services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          services.map((service) => (
+            <Card title={service.title} description={service.description}>
+              <ul class="space-y-2 text-sm text-gray-600">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Rabais pour groupes</h2>
+
+      <div class="space-y-6 text-gray-700 mb-8">
+        <p class="text-lg leading-relaxed">
+          Plus vous avez de résidents intéressés, plus les rabais sont importants. Nous offrons des formules adaptées selon le nombre de participants.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <p class="text-gray-900">
+            <span class="font-semibold">Exemple :</span> Pour dix résidents par mois, vous bénéficiez d'une réduction de vingt pour cent.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mb-6">Avantages pour votre résidence</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          staffBenefits.map((benefit) => (
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h4 class="font-semibold text-gray-900 mb-2">{benefit.title}</h4>
+              <p class="text-gray-700">{benefit.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Comment ça marche</h2>
+
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">1</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Consultation gratuite (30 minutes)</h3>
+            <p class="text-gray-700">Nous comprenons vos besoins, votre résidence, et le profil de vos résidents. Zéro engagement.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">2</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Programme personnalisé</h3>
+            <p class="text-gray-700">Nous créons un calendrier adapté à votre résidence avec ateliers mensuels, matériel personnalisé et formation du personnel.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">3</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Mise en œuvre</h3>
+            <p class="text-gray-700">Nous démarrons les ateliers, distribuons le matériel, et formons votre équipe pour soutenir les résidents.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">4</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Succès et ROI</h3>
+            <p class="text-gray-700">Moins de fraudes, résidents plus confiants, satisfaction accrue, et avantage compétitif pour votre résidence.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI & Case Study Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Le ROI de nos services</h2>
+
+      <div class="bg-blue-50 rounded-lg p-8 border-l-4 border-blue-600 mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Étude de cas: Résidence Soleil</h3>
+        <div class="space-y-4 text-gray-700">
+          <div>
+            <p class="font-semibold text-gray-900">Situation avant:</p>
+            <p>• 150 résidents • 20% affectés par des fraudes annuellement • Budget limité pour la sécurité</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900">Après 6 mois avec SeniorGeek:</p>
+            <p class="text-lg font-bold text-green-600">✓ 85% réduction des fraudes rapportées</p>
+            <p>✓ 120 résidents formés</p>
+            <p>✓ Satisfaction: 4.9/5 ⭐</p>
+            <p>✓ ROI: 1200% (économies > coûts de service)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">💰 Calcul Rapide</h3>
+          <div class="space-y-2 text-gray-700 text-sm">
+            <p><span class="font-semibold">Une arnaque évitée:</span> 5,000-10,000$</p>
+            <p><span class="font-semibold">Notre service/mois:</span> 300-500$</p>
+            <p><span class="font-semibold">Break-even:</span> 1 arnaque évitée par mois</p>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">⭐ Avantages Non-Financiers</h4>
+          <div class="space-y-2 text-gray-700 text-sm">
+            <p>✓ Responsabilité réduite</p>
+            <p>✓ Confiance des familles accrue</p>
+            <p>✓ Résidents plus indépendants</p>
+            <p>✓ Avantage compétitif</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Tarifs flexibles</h2>
+
+      <div class="bg-white rounded-lg p-8 border border-gray-200 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Plans par taille</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center pb-4 border-b">
+            <div><p class="font-semibold text-gray-900">Petite résidence (50-100 résidents)</p>
+              <p class="text-gray-600 text-sm">1 atelier/mois</p></div>
+            <p class="text-2xl font-bold text-blue-600">300$/mois</p>
+          </div>
+          <div class="flex justify-between items-center pb-4 border-b">
+            <div><p class="font-semibold text-gray-900">Résidence moyenne (100-200 résidents)</p>
+              <p class="text-gray-600 text-sm">2 ateliers/mois</p></div>
+            <p class="text-2xl font-bold text-blue-600">500$/mois</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div><p class="font-semibold text-gray-900">Grande résidence (200+ résidents)</p>
+              <p class="text-gray-600 text-sm">Programmes personnalisés</p></div>
+            <p class="text-2xl font-bold text-blue-600">Devis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+        <p class="text-gray-900"><span class="font-semibold">Tous les plans incluent:</span> Matériel imprimé personnalisé • Formation du personnel • Suivi mensuel • Support prioritaire</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Questions fréquentes</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Combien de résidents participent généralement ?</h3>
+          <p class="text-gray-700">Cela varie. Certains ateliers sont pleins, d'autres moins. C'est normal. Même si seulement 20% participent, vous avez un ROI positif si une arnaque est évitée.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Pouvez-vous adapter le programme à nos besoins ?</h3>
+          <p class="text-gray-700">Oui. Nous discutons avec votre direction pour créer un programme aligné avec votre culture et vos besoins spécifiques.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Que faire si un résident a une question entre les ateliers ?</h3>
+          <p class="text-gray-700">Nous offrons un support prioritaire. Votre personnel peut nous contacter et nous vous aiderons à résoudre rapidement.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Et si un résident se fait arnaquer pendant le service ?</h3>
+          <p class="text-gray-700">Nous l'aidons immédiatement à comprendre ce qui s'est passé et à prendre les mesures appropriées. C'est exactement pour ça que nous sommes là.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Peut-on annuler si ce n'est pas un bon fit ?</h3>
+          <p class="text-gray-700">Oui. Après le premier mois, vous pouvez résilier sans pénalité. Mais nous pensons que vous verrez rapidement l'impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Banner (CRO) -->
+  <section class="py-12 bg-gradient-to-r from-green-50 to-emerald-50 border-t-4 border-green-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-6">
+        <div class="flex-shrink-0 text-3xl font-bold text-green-600">✓</div>
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Satisfait ou argent remboursé</h3>
+          <p class="text-gray-700 mb-4">Essayez notre service pendant le premier mois. Si ce n'est pas un bon fit, nous vous remboursons intégralement.</p>
+          <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-700">
+            <label class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span>Premier mois sans risque</label>
+            <label class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span>Consultation gratuite</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prêt à protéger vos résidents ?"
+    text="Appelez-nous pour une consultation gratuite. Discutons de vos besoins et comment nous pouvons soutenir votre résidence."
+    actions={[
+      {
+        text: 'Appel gratuit maintenant',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      },
+      {
+        text: 'Demander un devis',
+        href: '/contact/',
+        type: 'secondary'
+      }
+    ]}
+  />
+</PageLayout>

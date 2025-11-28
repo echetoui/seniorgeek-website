@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/blog/BlogCard.astro';
+import fraudImage from '../../assets/images/fraud-detection-guide.png';
+import videImage from '../../assets/images/video-conference-elder.png';
+import groupImage from '../../assets/images/group-diverse.png';
+// Modern image formats for better performance
+import fraudImageWebp from '../../assets/images/fraud-detection-guide.webp';
+import fraudImageAvif from '../../assets/images/fraud-detection-guide.avif';
+import videImageWebp from '../../assets/images/video-conference-elder.webp';
+import videImageAvif from '../../assets/images/video-conference-elder.avif';
+import groupImageWebp from '../../assets/images/group-diverse.webp';
+import groupImageAvif from '../../assets/images/group-diverse.avif';
+
+// Exemple de récupération des articles (à adapter selon votre structure)
+const articles = [
+  {
+    title: "Comment reconnaître un faux appel d'urgence",
+    description: 'Les arnaqueurs se font passer pour des policiers, banquiers ou proches. Apprenez les signes à reconnaître pour protéger votre argent et votre famille.',
+    publishDate: new Date('2024-11-20'),
+    image: fraudImage.src,
+    category: 'Fraudes',
+    slug: 'reconnaitre-faux-appel-urgence',
+    author: 'SeniorGeek'
+  },
+  {
+    title: 'Le mot de code familial : votre système de protection',
+    description: 'Un moyen simple et efficace pour alerter votre famille si vous suspectez une arnaque. Comment mettre en place un système qui marche vraiment.',
+    publishDate: new Date('2024-11-15'),
+    image: groupImage.src,
+    category: 'Sécurité',
+    slug: 'mot-code-familial-protection',
+    author: 'SeniorGeek'
+  },
+  {
+    title: 'Utiliser la vidéo avec sa famille',
+    description: 'Vous aimeriez voir vos petits-enfants en vidéo. Un guide simple avec les applications les plus faciles à utiliser pour les aînés.',
+    publishDate: new Date('2024-11-10'),
+    image: videImage.src,
+    category: 'Apprentissage',
+    slug: 'video-famille-applications-faciles',
+    author: 'SeniorGeek'
+  }
+];
+---
+
+<BaseLayout
+  title="Blog - Conseils et guides pour la sécurité numérique des aînés | SeniorGeek"
+  description="Articles, guides et conseils pratiques pour aider les aînés à rester en sécurité en ligne. Fraudes, apprentissage technologique et protection numérique du Québec."
+>
+  {/* Hero Section */}
+  <section class="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Ressources et conseils pour la sécurité numérique des aînés
+        </h1>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          Découvrez nos articles pratiques sur les fraudes, l'apprentissage technologique et la protection en ligne pour les aînés du Québec
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Main Content */}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    {/* Filter/Search */}
+    <div class="mb-12">
+      <div class="flex flex-wrap gap-2">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors">
+          Tous
+        </button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-900 rounded-full font-medium hover:bg-gray-300 transition-colors">
+          Fraudes
+        </button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-900 rounded-full font-medium hover:bg-gray-300 transition-colors">
+          Sécurité
+        </button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-900 rounded-full font-medium hover:bg-gray-300 transition-colors">
+          Apprentissage
+        </button>
+      </div>
+    </div>
+
+    {/* Articles Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        articles.map((article) => (
+          <BlogCard
+            title={article.title}
+            description={article.description}
+            publishDate={article.publishDate}
+            image={article.image}
+            category={article.category}
+            slug={article.slug}
+            author={article.author}
+          />
+        ))
+      }
+    </div>
+
+    {/* Pagination */}
+    <div class="flex justify-center items-center gap-2 mt-12">
+      <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        ← Précédent
+      </button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        1
+      </button>
+      <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        2
+      </button>
+      <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        Suivant →
+      </button>
+    </div>
+  </div>
+</BaseLayout>

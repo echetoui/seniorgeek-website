@@ -1,0 +1,64 @@
+---
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { class: customClass = '', size = 'md' } = Astro.props;
+
+const sizeMap = {
+  sm: 'h-8',
+  md: 'h-12',
+  lg: 'h-16',
+};
+
+const sizeClass = sizeMap[size];
+---
+
+<svg
+  class={`${sizeClass} ${customClass}`}
+  viewBox="0 0 320 80"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <!-- Background -->
+  <rect width="320" height="80" fill="#1e40af" />
+
+  <!-- Heart shape (left side) - thin elegant stroke with gradient -->
+  <defs>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Heart SVG path - elegant and simple with slight tilt -->
+  <g transform="translate(25, 40) rotate(-15)">
+    <!-- Heart outline with thin stroke -->
+    <path
+      d="M 0,-3
+         C -5,-8 -12,-8 -12,-1
+         C -12,5 -5,12 0,15
+         C 5,12 12,5 12,-1
+         C 12,-8 5,-8 0,-3 Z"
+      fill="none"
+      stroke="url(#heartGradient)"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- Text: SeniorGeek -->
+  <text
+    x="60"
+    y="54"
+    font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="32"
+    font-weight="500"
+    fill="white"
+    letter-spacing="-0.5"
+  >
+    SeniorGeek
+  </text>
+</svg>

@@ -1,0 +1,60 @@
+---
+import { headerData } from '../../navigation.js';
+
+// Obtenir l'URL actuelle
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="flex items-center gap-8" aria-label="Navigation principale">
+  {
+    headerData.links.map((link, index) => {
+      // Vérifier si c'est la page actuelle
+      const isActive = currentPath === link.href || currentPath.startsWith(link.href);
+
+      return (
+        <div class="relative group">
+          <a
+            href={link.href}
+            class={`text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+              isActive ? 'text-blue-600 font-bold' : ''
+            }`}
+            aria-haspopup={link.submenu && link.submenu.length > 0 ? 'true' : 'false'}
+            aria-expanded="false"
+            aria-current={isActive ? 'page' : undefined}
+            data-menu-trigger={index}
+          >
+            {link.text}
+          </a>
+
+          {/* Dropdown Menu */}
+          {link.submenu && link.submenu.length > 0 && (
+            <div
+              class="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 py-2 z-50"
+              role="menu"
+              data-menu={index}
+            >
+              {link.submenu.map((submenu) => {
+                const isSubmenuActive = currentPath === submenu.href;
+                return (
+                  <a
+                    href={submenu.href}
+                    class={`block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                      isSubmenuActive ? 'bg-blue-50 text-blue-600 font-medium' : ''
+                    }`}
+                    role="menuitem"
+                    aria-current={isSubmenuActive ? 'page' : undefined}
+                  >
+                    <span class="font-medium">{submenu.text}</span>
+                    {submenu.description && (
+                      <span class="block text-gray-500 text-xs">{submenu.description}</span>
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+</nav>

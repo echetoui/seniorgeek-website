@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+export const getStaticPaths = () => {
+  return [{ params: { 404: undefined } }];
+};
+---
+
+<BaseLayout
+  title="Page non trouvée"
+  description="La page que vous cherchez n'existe pas"
+  noindex={true}
+>
+  <section class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <h1 class="text-6xl lg:text-8xl font-bold text-blue-600 mb-4">404</h1>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Page non trouvée
+        </h2>
+        <p class="text-lg text-gray-700 mb-8">
+          Nous n'avons pas trouvé la page que vous cherchez. Elle a peut-être été déplacée ou supprimée.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <Button
+          text="Retour à l'accueil"
+          href="/"
+          type="primary"
+          size="lg"
+        />
+        <Button
+          text="Nous contacter"
+          href="/contact/"
+          type="secondary"
+          size="lg"
+        />
+      </div>
+
+      <nav class="border-t border-gray-200 pt-8">
+        <p class="text-gray-600 mb-4">Vous cherchiez peut-être :</p>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/services/" class="text-blue-600 hover:text-blue-800 font-medium">
+              Nos services
+            </a>
+          </li>
+          <li>
+            <a href="/fraudes/" class="text-blue-600 hover:text-blue-800 font-medium">
+              Reconnaître les fraudes
+            </a>
+          </li>
+          <li>
+            <a href="/blog/" class="text-blue-600 hover:text-blue-800 font-medium">
+              Notre blog
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</BaseLayout>

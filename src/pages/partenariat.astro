@@ -1,0 +1,188 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/ui/Card.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+
+const partnerTypes = [
+  {
+    title: 'Résidences et CHSLD',
+    description: 'Offrez à vos résidents une sécurité numérique complète',
+    benefits: [
+      'Ateliers mensuels de prévention',
+      'Matériel imprimé personnalisé',
+      'Tarifs avantageux pour groupes',
+      'Formation pour votre personnel'
+    ]
+  },
+  {
+    title: 'Organismes communautaires',
+    description: 'Intégrez nos services à vos offres existantes',
+    benefits: [
+      'Co-branded ateliers et ressources',
+      'Rabais pour vos membres',
+      'Support de nos experts',
+      'Promotion mutuelle'
+    ]
+  },
+  {
+    title: 'Services de maintien à domicile',
+    description: 'Complétez votre offre avec la sécurité numérique',
+    benefits: [
+      'Partenariat flexible',
+      'Formation de vos intervenant(e)s',
+      'Partage de clientèle',
+      'Branding conjoint'
+    ]
+  },
+  {
+    title: 'Professionnels de la santé',
+    description: 'Recommandez nos services à vos patients aînés',
+    benefits: [
+      'Programme de référence',
+      'Ressources professionnelles',
+      'Mise à jour régulière des risques',
+      'Collaboration cas par cas'
+    ]
+  }
+];
+
+const whyPartner = [
+  {
+    title: 'Besoin réel',
+    description: "Les aînés du Québec ont besoin de protection. Votre partenariat peut l'offrir."
+  },
+  {
+    title: 'Experts qualifiés',
+    description: "Une équipe avec une vraie expérience en accompagnement numérique."
+  },
+  {
+    title: 'Flexibilité',
+    description: "Nous adaptons nos services à vos besoins et à vos clients."
+  },
+  {
+    title: 'Valeurs partagées',
+    description: "Nous croyons en la bienveillance, l'accessibilité et la protection des aînés."
+  }
+];
+---
+
+<PageLayout
+  title="Partenariat avec SeniorGeek"
+  description="Devenez partenaire et offrez une sécurité numérique complète à vos clients"
+  heroTitle="Partenariat"
+  heroSubtitle="Rejoignez-nous pour protéger les aînés du Québec"
+>
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Types de partenariats</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          partnerTypes.map((type) => (
+            <Card title={type.title} description={type.description}>
+              <ul class="space-y-2 text-sm text-gray-600">
+                {type.benefits.map((benefit) => (
+                  <li class="flex items-start gap-2">
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Pourquoi devenir partenaire</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          whyPartner.map((reason) => (
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-bold text-gray-900 mb-2">{reason.title}</h3>
+              <p class="text-gray-700">{reason.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Processus de partenariat</h2>
+
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-xl flex-shrink-0">1</span>
+          <div>
+            <p class="font-semibold text-gray-900">Discussion initiale</p>
+            <p class="text-gray-700">Nous écoutons vos besoins et déterminons le type de partenariat le plus approprié.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-xl flex-shrink-0">2</span>
+          <div>
+            <p class="font-semibold text-gray-900">Accord de partenariat</p>
+            <p class="text-gray-700">Nous développons un accord clair qui définit les avantages et responsabilités de chacun.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-xl flex-shrink-0">3</span>
+          <div>
+            <p class="font-semibold text-gray-900">Mise en œuvre</p>
+            <p class="text-gray-700">Nous mettons en place le partenariat et formons votre équipe si nécessaire.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-xl flex-shrink-0">4</span>
+          <div>
+            <p class="font-semibold text-gray-900">Soutien continu</p>
+            <p class="text-gray-700">Nous continuons de vous soutenir et d'ajuster le partenariat selon vos besoins.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Cas d'usage</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-2">Résidences</h3>
+          <p>Votre résidence offrira des ateliers mensuels et disposera de matériel imprimé de sécurité pour vos résidents. Cela renforce votre image et protège vos résidents.</p>
+        </div>
+
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-2">Organismes</h3>
+          <p>Vous mettrez en avant notre expertise dans vos communications. Vos membres recevront des rabais. Nous nous promouvons mutuellement auprès de nos réseaux.</p>
+        </div>
+
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-2">Professionnels</h3>
+          <p>Vous référez vos patients aînés à nos services de sécurité numérique. Vous recevez de la documentation à partager. Vos patients sont mieux protégés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Intéressé à un partenariat"
+    text="Parlons de comment nous pouvons travailler ensemble pour protéger davantage d'aînés"
+    actions={[
+      {
+        text: "Discuter d'un partenariat",
+        href: '/contact/',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

@@ -1,0 +1,471 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/widgets/Hero.astro';
+import Services from '../components/widgets/Services.astro';
+import WhoWeSolve from '../components/widgets/WhoWeSolve.astro';
+import WhyChooseUs from '../components/widgets/WhyChooseUs.astro';
+import Testimonials from '../components/widgets/Testimonials.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+import heroImageAvif from '../assets/images/hero-tablet-learning.avif';
+import heroImageWebp from '../assets/images/hero-tablet-learning.webp';
+import heroImage from '../assets/images/hero-tablet-learning.png';
+
+const services = [
+  {
+    title: '👵 Pour les aînés',
+    description: 'Des services adaptés pour vous aider à maîtriser la technologie et rester en sécurité',
+    icon: 'users',
+    href: '/services/aines/',
+    items: [
+      '🏠 Accompagnement individuel personnalisé',
+      '👥 Ateliers en groupe convivial',
+      '🎮 Jeu Vrai ou Faux éducatif',
+      '🔐 Mot de code familial pour la sécurité',
+      '⚡ Aide rapide en 24 à 48 heures'
+    ]
+  },
+  {
+    title: '💕 Pour les proches',
+    description: 'Protégez vos proches en reconnaissant les risques et en renforçant la sécurité',
+    icon: 'heart',
+    href: '/services/proches/',
+    items: [
+      '📱 Vérification des messages suspects',
+      '💬 Conseils personnalisés pour votre famille',
+      '🔐 Mot de code familial sécurisé',
+      '👁️ Suivi régulier des risques',
+      '📚 Guide complet de sécurité familiale'
+    ]
+  },
+  {
+    title: '🏛️ Pour les résidences',
+    description: 'Formations et ateliers pour protéger vos résidents et renforcer les services',
+    icon: 'building',
+    href: '/services/residences/',
+    items: [
+      '📚 Ateliers de prévention complets',
+      '🎓 Séances individuelles pour les résidents',
+      '📄 Matériel imprimé et ressources',
+      '📅 Programme mensuel adapté',
+      '💰 Rabais spécial pour résidents',
+      '👨‍🏫 Formation pour votre personnel'
+    ]
+  }
+];
+
+const targets = [
+  {
+    title: '👵 Personnes âgées',
+    description: 'Des aînés qui veulent explorer le numérique en toute confiance',
+    icon: 'users',
+    points: [
+      "📚 Personnes ayant peu d'expérience technologique",
+      "📱 Désireuses d'apprendre à utiliser tablette ou téléphone",
+      '🛡️ Cherchant à se protéger des fraudes',
+      'Voulant rester connectées avec leur famille'
+    ]
+  },
+  {
+    title: '👨‍👩‍👧‍👦 Proches et familles',
+    description: 'Des enfants et petits-enfants préoccupés par la sécurité de leurs aînés',
+    icon: 'heart',
+    points: [
+      '😟 Inquiets face aux risques numériques',
+      '🛡️ Cherchant à protéger un proche âgé',
+      '🔒 Voulant mettre en place des mesures de sécurité',
+      '❤️ Désirant une relation numérique sécuritaire'
+    ]
+  },
+  {
+    title: '🏢 Résidences et services',
+    description: 'Des établissements soucieux du bien-être numérique de leurs résidents',
+    icon: 'building',
+    points: [
+      '🏛️ Résidences pour aînés et CHSLD',
+      '🏠 Services de maintien à domicile',
+      '👥 Centres communautaires pour aînés',
+      '🤝 Organismes œuvrant auprès des personnes âgées'
+    ]
+  }
+];
+
+const values = [
+  {
+    title: '💬 Langage simple',
+    description: 'Aucun jargon technique. Nous expliquons tout en termes que tout le monde comprend.',
+    icon: 'sparkles'
+  },
+  {
+    title: '❤️ Respect et bienveillance',
+    description: 'Nous écoutons vos préoccupations et adaptons nos services à votre rythme et vos besoins.',
+    icon: 'heart'
+  },
+  {
+    title: "🛡️ Sécurité d'abord",
+    description: 'Nous mettons la protection de vos données et de votre sécurité en premier lieu.',
+    icon: 'shield'
+  },
+  {
+    title: '♿ Accessibilité',
+    description: 'Nos services sont conçus pour être faciles à utiliser, peu importe votre âge ou expérience.',
+    icon: 'check'
+  }
+];
+
+const testimonials = [
+  {
+    quote: "⭐ SeniorGeek m'a permis de comprendre comment utiliser ma tablette sans crainte. Les explications étaient claires et sans jargon.",
+    author: 'Mme Gérard',
+    role: '👵 Participante aux ateliers'
+  },
+  {
+    quote: "⭐ Je suis rassuré de savoir que ma mère peut m'appeler si elle reçoit un message suspect. Le mot de code familial est une excellente idée.",
+    author: 'Jean Dupont',
+    role: '👨 Fils et proche'
+  },
+  {
+    quote: '⭐ Nos résidents adorent les ateliers SeniorGeek. Ils se sentent plus confiants et en sécurité en ligne.',
+    author: 'Mme Leblanc',
+    role: '🏛️ Directrice résidence'
+  }
+];
+---
+
+<BaseLayout
+  title="SeniorGeek - Accompagnement numérique pour les aînés"
+  description="Protégez et accompagnez les aînés du Québec dans leur vie numérique. Services pour aînés, proches et résidences."
+>
+  <Hero
+    title="Protéger et accompagner les aînés du Québec dans leur vie numérique"
+    subtitle="SeniorGeek aide les aînés et leurs familles à éviter les arnaques, à comprendre les pièges modernes et à utiliser leurs appareils avec confiance, à la maison ou en résidence."
+    tagline="Un service pensé pour les familles et les résidences du Québec"
+    imageAvif={heroImageAvif.src}
+    imageWebp={heroImageWebp.src}
+    imagePng={heroImage.src}
+    actions={[
+      {
+        text: 'Voir nos services',
+        href: '/services/',
+        type: 'primary'
+      },
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'secondary'
+      }
+    ]}
+  />
+
+  <!-- Qui êtes-vous? Section (CRO Segmentation) -->
+  <section class="py-16 lg:py-20 bg-white border-t border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+          Qui êtes-vous ?
+        </h2>
+        <p class="text-lg text-gray-600">
+          Sélectionnez votre profil pour découvrir le service qui vous convient
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Aînés -->
+        <a href="/services/aines/"
+           class="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 border-2 border-blue-200 hover:border-blue-600 hover:shadow-lg transition-all duration-300">
+          <div class="text-4xl mb-4">👵</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600">
+            Je suis un aîné
+          </h3>
+          <p class="text-gray-700 mb-6">
+            Je veux apprendre à utiliser la technologie avec confiance et rester en sécurité
+          </p>
+          <button class="inline-flex items-center font-semibold text-blue-600 group-hover:text-blue-700">
+            Explorer →
+          </button>
+        </a>
+
+        <!-- Proches -->
+        <a href="/services/proches/"
+           class="group bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-8 border-2 border-purple-200 hover:border-purple-600 hover:shadow-lg transition-all duration-300">
+          <div class="text-4xl mb-4">👨‍👩‍👧</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600">
+            Je protège un proche
+          </h3>
+          <p class="text-gray-700 mb-6">
+            Je veux m'assurer que mon proche âgé est en sécurité et protégé des fraudes
+          </p>
+          <button class="inline-flex items-center font-semibold text-purple-600 group-hover:text-purple-700">
+            Découvrir →
+          </button>
+        </a>
+
+        <!-- Résidences -->
+        <a href="/services/residences/"
+           class="group bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-8 border-2 border-green-200 hover:border-green-600 hover:shadow-lg transition-all duration-300">
+          <div class="text-4xl mb-4">🏢</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600">
+            Je gère une résidence
+          </h3>
+          <p class="text-gray-700 mb-6">
+            Je veux former mes résidents et renforcer la sécurité numérique
+          </p>
+          <button class="inline-flex items-center font-semibold text-green-600 group-hover:text-green-700">
+            Devis →
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Stats Section -->
+  <section class="py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl lg:text-5xl font-bold mb-2">500+</div>
+          <p class="text-blue-100">Familles accompagnées</p>
+        </div>
+        <div>
+          <div class="text-4xl lg:text-5xl font-bold mb-2">4.8/5</div>
+          <p class="text-blue-100">Note moyenne</p>
+        </div>
+        <div>
+          <div class="text-4xl lg:text-5xl font-bold mb-2">15K+</div>
+          <p class="text-blue-100">Heures d'accompagnement</p>
+        </div>
+        <div>
+          <div class="text-4xl lg:text-5xl font-bold mb-2">98%</div>
+          <p class="text-blue-100">Clients satisfaits</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Services
+    title="Nos services"
+    subtitle="Trois offres pensées pour chacun"
+    services={services}
+  />
+
+  <WhoWeSolve
+    title="Nous sommes là pour vous"
+    subtitle="Que vous soyez un aîné, un proche ou une résidence, notre équipe peut vous aider."
+    targets={targets}
+  />
+
+  <WhyChooseUs
+    title="Pourquoi nous choisir"
+    subtitle="Nos valeurs fondamentales"
+    values={values}
+  />
+
+  <!-- Mini-Pricing Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Tarification simple et transparente
+        </h2>
+        <p class="text-lg text-gray-600">
+          Choisissez l'option qui correspond à votre situation
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Aînés Card -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-blue-600 hover:shadow-xl transition-shadow">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">👵 Pour les aînés</h3>
+            <p class="text-gray-600 mb-6">Apprentissage et sécurité personnalisés</p>
+
+            <div class="mb-6">
+              <p class="text-5xl font-bold text-blue-600 mb-2">80$/h</p>
+              <p class="text-gray-600">Session individuelle</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-sm text-gray-700">
+              <li class="flex items-center gap-2">
+                <span class="text-blue-600 font-bold">✓</span>
+                Formation 1-sur-1
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-blue-600 font-bold">✓</span>
+                Rythme adapté à vous
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-blue-600 font-bold">✓</span>
+                Sécurité en priorité
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-blue-600 font-bold">✓</span>
+                Support entre sessions
+              </li>
+            </ul>
+
+            <a href="/services/aines/" class="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition-colors">
+              En savoir plus
+            </a>
+          </div>
+        </div>
+
+        <!-- Proches Card -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-purple-600 hover:shadow-xl transition-shadow">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">👨‍👩‍👧‍👦 Pour les proches</h3>
+            <p class="text-gray-600 mb-6">Protection et soutien continu</p>
+
+            <div class="mb-6">
+              <p class="text-5xl font-bold text-purple-600 mb-2">50$/m</p>
+              <p class="text-gray-600">Service mensuel</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-sm text-gray-700">
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span>
+                Vérification messages suspects
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span>
+                Mot de code familial
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span>
+                Conseils personnalisés
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span>
+                Support prioritaire
+              </li>
+            </ul>
+
+            <a href="/services/proches/" class="block w-full bg-purple-700 text-white py-3 rounded-lg font-semibold text-center hover:bg-purple-800 transition-colors">
+              En savoir plus
+            </a>
+          </div>
+        </div>
+
+        <!-- Résidences Card -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-green-600 hover:shadow-xl transition-shadow">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">🏛️ Pour les résidences</h3>
+            <p class="text-gray-600 mb-6">Formation et ateliers pour équipes</p>
+
+            <div class="mb-6">
+              <p class="text-5xl font-bold text-green-600 mb-2">À partir</p>
+              <p class="text-3xl font-bold text-green-600 mb-2">300$/m</p>
+              <p class="text-gray-600">Ateliers mensuels</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-sm text-gray-700">
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Ateliers mensuels
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Matériel imprimé inclus
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Formation du personnel
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Support continu
+              </li>
+            </ul>
+
+            <a href="/services/residences/" class="block w-full bg-green-700 text-white py-3 rounded-lg font-semibold text-center hover:bg-green-800 transition-colors">
+              Demander un devis
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-gray-600 mb-4">Vous cherchez d'autres options?</p>
+        <a href="/tarifs/" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
+          Voir tous nos tarifs et options →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials
+    title="Ce que disent nos clients"
+    subtitle="Des histoires inspirantes"
+    testimonials={testimonials}
+  />
+
+  <!-- CTA After Testimonials (CRO) -->
+  <section class="py-12 lg:py-16 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Rejoignez ces familles satisfaites
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Commencez avec une consultation gratuite de 15 minutes, sans engagement
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:+15141234567" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          Appel gratuit maintenant →
+        </a>
+        <a href="/lead-magnet/" class="inline-block bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          📥 Guide gratuit
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Banner (CRO) -->
+  <section class="py-12 bg-gradient-to-r from-green-50 to-emerald-50 border-t-4 border-green-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-6">
+        <!-- Icône -->
+        <div class="flex-shrink-0 text-3xl font-bold text-green-600">✓</div>
+
+        <!-- Contenu -->
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            100% Satisfait ou argent remboursé
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Si vous n'êtes pas satisfait après votre première consultation,
+            nous vous remboursons intégralement. Sans questions posées.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-700">
+            <label class="flex items-center gap-2">
+              <span class="text-green-600 font-bold">✓</span>
+              Pas d'engagement long terme
+            </label>
+            <label class="flex items-center gap-2">
+              <span class="text-green-600 font-bold">✓</span>
+              Consultation gratuite
+            </label>
+            <label class="flex items-center gap-2">
+              <span class="text-green-600 font-bold">✓</span>
+              Aucune obligation
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prêt à protéger votre famille"
+    text="Contactez-nous pour une évaluation gratuite de vos besoins en accompagnement numérique"
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      },
+      {
+        text: 'Nous écrire',
+        href: '/contact/',
+        type: 'secondary'
+      }
+    ]}
+  />
+</BaseLayout>

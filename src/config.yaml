@@ -1,0 +1,46 @@
+metadata:
+  title: SeniorGeek - Accompagnement numérique pour les aînés
+  description: Protéger et accompagner les aînés du Québec dans leur vie numérique
+  language: fr
+  locale: fr-CA
+  url: https://seniorgeek.ca
+  logo: /images/logo.svg
+  favicon: /favicon.ico
+
+branding:
+  name: SeniorGeek
+  tagline: Accompagnement numérique pour les aînés
+  description: Aide les personnes âgées, les proches et les résidences à reconnaître les fraudes modernes et utiliser la technologie en toute confiance
+  logo:
+    src: /images/seniorgeek-logo.svg
+    alt: Logo SeniorGeek
+
+social:
+  facebook: https://facebook.com/seniorgeek
+  instagram: https://instagram.com/seniorgeek
+  linkedin: https://linkedin.com/company/seniorgeek
+  twitter: https://twitter.com/seniorgeek
+  phone: +1-514-XXX-XXXX
+  email: contact@seniorgeek.ca
+
+contact:
+  phone: +1-514-XXX-XXXX
+  email: contact@seniorgeek.ca
+  address: Montreal, Quebec, Canada
+
+services:
+  - name: Pour les aînés
+    slug: aines
+    icon: users
+  - name: Pour les proches
+    slug: proches
+    icon: heart
+  - name: Pour les résidences
+    slug: residences
+    icon: building
+
+cta:
+  phone_call: Appel gratuit de quinze minutes
+  evaluation: Évaluer êtes-vous à l'aise avec le numérique
+  button_phone: Appel gratuit
+  button_evaluation: Évaluation gratuite

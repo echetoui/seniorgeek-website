@@ -1,0 +1,446 @@
+---
+import '../styles/global.css';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  author?: string;
+}
+
+const {
+  title = 'SeniorGeek - Accompagnement numérique pour les aînés',
+  description = 'Protéger et accompagner les aînés du Québec dans leur vie numérique',
+  image = 'https://seniorgeek.ca/og-image.png',
+  canonical,
+  noindex = false,
+  nofollow = false,
+  author = 'SeniorGeek',
+} = Astro.props;
+
+const canonicalUrl = canonical || Astro.url.href;
+const ogUrl = canonical || Astro.url.href;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- Performance Optimizations -->
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:site_name" content="SeniorGeek" />
+    <meta property="og:locale" content="fr_CA" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    <meta property="twitter:site" content="@SeniorGeekCA" />
+    <meta property="twitter:creator" content="@SeniorGeekCA" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content={author} />
+    <meta property="article:author" content={author} />
+    <meta name="publisher" content="SeniorGeek" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {nofollow && <meta name="robots" content="index, nofollow" />}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Geo Meta Tags (Quebec Canada) -->
+    <meta name="geo.placename" content="Quebec, Canada" />
+    <meta name="geo.region" content="CA-QC" />
+    <meta name="ICBM" content="46.8139, -71.2080" />
+    <meta name="geo.position" content="46.8139;-71.2080" />
+    <meta property="og:locale:alternate" content="fr_CA" />
+
+    <!-- Language and Locale -->
+    <meta http-equiv="Content-Language" content="fr-CA" />
+
+    <!-- Keywords and SEO -->
+    <meta name="keywords" content="aînés, sécurité numérique, accompagnement technologique, Québec, arnaque, fraude" />
+    <meta name="language" content="French" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Web App Capabilities -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SeniorGeek" />
+
+    <!-- DNS Prefetch for Performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Google Fonts - Non-blocking async loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
+
+    <!-- Critical CSS for LCP Optimization -->
+    <style>
+      :root {
+        /* System font stack as fallback while Google Fonts loads */
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color-scheme: light;
+      }
+
+      /* Apply Inter font once loaded */
+      @supports (font-family: 'Inter') {
+        :root {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+      }
+
+      /* Critical rendering path optimization */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #111827;
+        line-height: 1.5;
+      }
+
+      h1, h2, h3 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      @media (min-width: 1024px) {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      /* Section backgrounds for faster rendering */
+      section {
+        display: block;
+      }
+
+      /* Button critical styles */
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', sans-serif;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+
+    <!-- JSON-LD Structured Data - Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SeniorGeek",
+        "url": "https://seniorgeek.ca",
+        "logo": "https://seniorgeek.ca/logo-full.svg",
+        "description": "Accompagnement numérique bienveillant pour les aînés du Québec",
+        "sameAs": [
+          "https://www.facebook.com/seniorgeekca",
+          "https://www.instagram.com/seniorgeekca",
+          "https://www.youtube.com/@seniorgeekca"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Service",
+          "telephone": "+1-514-XXX-XXXX",
+          "email": "contact@seniorgeek.ca",
+          "areaServed": "CA-QC",
+          "availableLanguage": "fr"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CA",
+          "addressRegion": "QC",
+          "addressLocality": "Quebec",
+          "streetAddress": "Quebec, Canada"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD Structured Data - Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "SeniorGeek",
+        "image": "https://seniorgeek.ca/logo-full.svg",
+        "description": "Services de sécurité numérique pour aînés à Quebec",
+        "areaServed": "QC",
+        "priceRange": "$",
+        "url": "https://seniorgeek.ca",
+        "telephone": "+1-514-XXX-XXXX",
+        "email": "contact@seniorgeek.ca"
+      }
+    </script>
+
+    <!-- JSON-LD Structured Data - WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SeniorGeek",
+        "url": "https://seniorgeek.ca",
+        "description": "Accompagnement numérique et sécurité pour aînés du Québec",
+        "inLanguage": "fr-CA",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://seniorgeek.ca/search?q={search_term_string}"
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <Header />
+    <main class="min-h-screen" id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Mobile Menu Handler
+      function initMobileMenu() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const header = document.querySelector('header');
+        let isMenuOpen = false;
+
+        if (!menuButton || !header) return;
+
+        // Créer le menu mobile s'il n'existe pas
+        let mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu) {
+          mobileMenu = createMobileMenu(header);
+        }
+
+        // Toggle menu au clic
+        menuButton.addEventListener('click', () => {
+          isMenuOpen = !isMenuOpen;
+          toggleMenu(menuButton, mobileMenu, isMenuOpen);
+        });
+
+        // Fermer le menu au clic sur un lien
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            isMenuOpen = false;
+            toggleMenu(menuButton, mobileMenu, isMenuOpen);
+          });
+        });
+
+        // Fermer le menu avec la touche Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && isMenuOpen) {
+            isMenuOpen = false;
+            toggleMenu(menuButton, mobileMenu, isMenuOpen);
+            menuButton.focus();
+          }
+        });
+
+        // Fermer le menu au clic en dehors
+        document.addEventListener('click', (e) => {
+          if (!header.contains(e.target) && isMenuOpen) {
+            isMenuOpen = false;
+            toggleMenu(menuButton, mobileMenu, isMenuOpen);
+          }
+        });
+      }
+
+      function createMobileMenu(header) {
+        const navElement = header.querySelector('nav .flex-1');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.id = 'mobile-menu';
+        mobileMenu.className = 'md:hidden hidden absolute top-full left-0 right-0 bg-white shadow-lg z-40 py-4 px-4';
+        mobileMenu.setAttribute('aria-label', 'Menu mobile');
+
+        if (navElement) {
+          mobileMenu.innerHTML = navElement.innerHTML;
+        }
+
+        const actions = document.createElement('div');
+        actions.className = 'flex flex-col gap-2 mt-4 pt-4 border-t border-gray-200';
+
+        const callBtn = document.createElement('a');
+        callBtn.href = 'tel:+15141234567';
+        callBtn.className = 'block text-center px-4 py-2 rounded-lg bg-gray-100 text-gray-900 hover:bg-gray-200 transition-colors';
+        callBtn.textContent = 'Appel gratuit';
+
+        const contactBtn = document.createElement('a');
+        contactBtn.href = '/contact/';
+        contactBtn.className = 'block text-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium';
+        contactBtn.textContent = 'Nous contacter';
+
+        actions.appendChild(callBtn);
+        actions.appendChild(contactBtn);
+        mobileMenu.appendChild(actions);
+
+        header.appendChild(mobileMenu);
+        return mobileMenu;
+      }
+
+      function toggleMenu(button, menu, isOpen) {
+        button.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) {
+          menu.classList.remove('hidden');
+          menu.classList.add('block');
+        } else {
+          menu.classList.add('hidden');
+          menu.classList.remove('block');
+        }
+      }
+
+      // Dropdown Menu Handler
+      function initDropdownMenus() {
+        const menuTriggers = document.querySelectorAll('[data-menu-trigger]');
+
+        menuTriggers.forEach((trigger) => {
+          const triggerElement = trigger;
+          const menuIndex = triggerElement.getAttribute('data-menu-trigger');
+          const menuContainer = document.querySelector(`[data-menu="${menuIndex}"]`);
+
+          if (!menuContainer) return;
+
+          const menuItems = menuContainer.querySelectorAll('[role="menuitem"]');
+
+          triggerElement.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openMenu(triggerElement, menuContainer);
+              const firstItem = menuItems[0];
+              if (firstItem) {
+                firstItem.focus();
+              }
+            }
+          });
+
+          menuContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              e.preventDefault();
+              closeMenu(triggerElement, menuContainer);
+              triggerElement.focus();
+            }
+          });
+
+          menuContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+              e.preventDefault();
+              const focusedElement = document.activeElement;
+              const items = Array.from(menuItems);
+              const currentIndex = items.indexOf(focusedElement);
+
+              let nextIndex;
+              if (e.key === 'ArrowDown') {
+                nextIndex = (currentIndex + 1) % items.length;
+              } else {
+                nextIndex = (currentIndex - 1 + items.length) % items.length;
+              }
+
+              items[nextIndex].focus();
+            }
+          });
+
+          Array.from(menuItems).forEach((item, index) => {
+            item.addEventListener('keydown', (e) => {
+              if (e.key === 'Tab') {
+                if (index === menuItems.length - 1 && !e.shiftKey) {
+                  closeMenu(triggerElement, menuContainer);
+                }
+                if (index === 0 && e.shiftKey) {
+                  closeMenu(triggerElement, menuContainer);
+                }
+              }
+            });
+          });
+
+          triggerElement.addEventListener('focus', () => {
+            // Optional: open menu on focus
+          });
+        });
+      }
+
+      function openMenu(trigger, menu) {
+        trigger.setAttribute('aria-expanded', 'true');
+        menu.classList.add('group-hover:opacity-100', 'group-hover:visible');
+        menu.classList.remove('opacity-0', 'invisible');
+        menu.setAttribute('data-open', 'true');
+      }
+
+      function closeMenu(trigger, menu) {
+        trigger.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('group-hover:opacity-100', 'group-hover:visible');
+        menu.classList.add('opacity-0', 'invisible');
+        menu.removeAttribute('data-open');
+      }
+
+      // Initialize on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          initMobileMenu();
+          initDropdownMenus();
+        });
+      } else {
+        initMobileMenu();
+        initDropdownMenus();
+      }
+    </script>
+  </body>
+</html>

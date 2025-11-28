@@ -1,0 +1,104 @@
+---
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+
+interface PricingOption {
+  name: string;
+  description: string;
+  price?: string;
+  period?: string;
+  features: string[];
+  cta?: string;
+  ctaHref?: string;
+  highlighted?: boolean;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  options: PricingOption[];
+}
+
+const {
+  title = 'Nos tarifs',
+  subtitle = 'Des formules adaptées à vos besoins',
+  options,
+} = Astro.props;
+---
+
+<section class="py-16 lg:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    {(title || subtitle) && (
+      <div class="text-center mb-12 lg:mb-16">
+        {title && <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{title}</h2>}
+        {subtitle && <p class="text-lg text-gray-700 max-w-2xl mx-auto">{subtitle}</p>}
+      </div>
+    )}
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        options.map((option) => (
+          <div
+            class={`rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 ${
+              option.highlighted
+                ? 'bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-xl'
+                : 'bg-white border border-gray-200'
+            }`}
+          >
+            <div class="p-8">
+              {option.highlighted && (
+                <Badge text="Populaire" type="info" class="mb-4 bg-white text-blue-600" />
+              )}
+
+              <h3 class={`text-2xl font-bold mb-2 ${option.highlighted ? 'text-white' : 'text-gray-900'}`}>
+                {option.name}
+              </h3>
+
+              <p
+                class={`text-sm mb-6 ${
+                  option.highlighted ? 'text-blue-100' : 'text-gray-600'
+                }`}
+              >
+                {option.description}
+              </p>
+
+              {option.price && (
+                <div class="mb-6">
+                  <span class={`text-4xl font-bold ${option.highlighted ? 'text-white' : 'text-gray-900'}`}>
+                    {option.price}
+                  </span>
+                  {option.period && (
+                    <span class={`text-sm ${option.highlighted ? 'text-blue-100' : 'text-gray-600'}`}>
+                      {' '}
+                      {option.period}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              <ul class="space-y-3 mb-8">
+                {option.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <span class={option.highlighted ? 'text-blue-50' : 'text-gray-700'}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {option.cta && (
+                <Button
+                  text={option.cta}
+                  href={option.ctaHref || '/contact/'}
+                  type={option.highlighted ? 'secondary' : 'primary'}
+                  size="md"
+                  class="w-full justify-center"
+                />
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

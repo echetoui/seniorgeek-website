@@ -1,0 +1,406 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CallToAction from '../../components/widgets/CallToAction.astro';
+import Card from '../../components/ui/Card.astro';
+import serviceImageAvif from '../../assets/images/service-group-learning.avif';
+import serviceImageWebp from '../../assets/images/service-group-learning.webp';
+import serviceImage from '../../assets/images/service-group-learning.png';
+
+const services = [
+  {
+    title: "🏠 Accompagnement individuel",
+    description: "Un expert vous visite à domicile pour vous aider avec votre tablette, téléphone ou ordinateur",
+    items: [
+      "📚 Apprentissage à votre rythme",
+      "🏡 Chez vous, dans votre environnement",
+      "⏱️ Jusqu'à deux heures par séance",
+      "🤝 Répétition sans jugement"
+    ]
+  },
+  {
+    title: "👥 Ateliers en groupe",
+    description: "Apprenez ensemble avec d'autres aînés dans une ambiance conviviale et sécuritaire",
+    items: [
+      "📅 Thèmes variés chaque mois",
+      "👨‍👩‍👧‍👦 Groupe de quatre à huit personnes",
+      "⏰ Durée d'une heure à une heure trente",
+      "📄 Ressources imprimées fournies"
+    ]
+  },
+  {
+    title: "🎮 Jeu Vrai ou Faux",
+    description: "Un jeu amusant et éducatif pour tester si vous reconnaissez les arnaques",
+    items: [
+      "❓ Questions sur les fraudes courantes",
+      "💡 Réponses expliquées simplement",
+      "👥 Idéal pour les groupes ou en individuel",
+      "💻 Disponible en ligne ou imprimé"
+    ]
+  },
+  {
+    title: "🔐 Mot de code familial",
+    description: "Créez un système secret pour alerter votre famille si vous suspectez une arnaque",
+    items: [
+      "🔑 Choix d'un mot ou phrase facile",
+      "📞 À utiliser lors d'appels suspects",
+      "🚨 Permet à la famille de réagir rapidement",
+      "✅ Gratuit et facile à mettre en place"
+    ]
+  }
+];
+
+const benefits = [
+  {
+    title: '✨ Confiance renforcée',
+    description: 'Vous apprenez à utiliser vos appareils sans crainte et avec assurance'
+  },
+  {
+    title: '🛡️ Sécurité améliorée',
+    description: 'Vous reconnaissez les arnaques et savez comment vous protéger'
+  },
+  {
+    title: '💬 Connexion familiale',
+    description: 'Vous pouvez communiquer plus facilement avec vos proches en ligne'
+  },
+  {
+    title: '🦸 Indépendance maintenue',
+    description: 'Vous faites vos propres choix sans dépendre de la technologie'
+  }
+];
+---
+
+<PageLayout
+  title="Accompagnement numérique pour aînés à Quebec | SeniorGeek"
+  description="Services d'accompagnement personnalisé pour aînés du Québec. Apprenez à utiliser tablette, téléphone et ordinateur en toute sécurité. Ateliers et consultations individuelles."
+  heroTitle="Services pour les aînés"
+  heroSubtitle="Apprenez à utiliser la technologie avec confiance et sécurité - Services adaptés pour aînés du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-lg overflow-hidden shadow-lg bg-white border border-white" style="background-color: #FFFFFF;">
+        <picture>
+          <source srcset={serviceImageAvif.src} type="image/avif" />
+          <source srcset={serviceImageWebp.src} type="image/webp" />
+          <img src={serviceImage.src} alt="Groupe d'aînés apprenant ensemble" class="w-full h-auto object-cover" style="background-color: #FFFFFF;" />
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Nos services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          services.map((service) => (
+            <Card title={service.title} description={service.description}>
+              <ul class="space-y-2 text-sm text-gray-600">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Pourquoi ces services</h2>
+
+      <div class="space-y-6 text-gray-700 mb-8">
+        <p class="text-lg leading-relaxed">
+          Nous savons que de nombreux aînés trouvent la technologie intimidante. Ce n'est pas parce que vous n'êtes pas capable. C'est parce que personne n'a pris le temps de vous expliquer correctement.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Nos services sont conçus pour aller à votre rythme, dans votre environnement, avec un langage que vous comprenez. Pas de jargon. Pas de jugement. Juste du vrai accompagnement.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mb-6">Avantages</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          benefits.map((benefit) => (
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h4 class="font-semibold text-gray-900 mb-2">{benefit.title}</h4>
+              <p class="text-gray-700">{benefit.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Comment ça marche
+      </h2>
+
+      <div class="space-y-8">
+        <!-- Étape 1 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">
+              1
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              Consultation gratuite (15 minutes)
+            </h3>
+            <p class="text-gray-700">
+              Appelez-nous ou remplissez le formulaire. Nous écoutons votre situation et vos besoins spécifiques sans engagement.
+            </p>
+          </div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">
+              2
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              Proposition personnalisée
+            </h3>
+            <p class="text-gray-700">
+              Nous recommandons le service qui correspond le mieux à vos besoins avec un tarif transparent et honnête.
+            </p>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">
+              3
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              Démarrage rapide
+            </h3>
+            <p class="text-gray-700">
+              Une fois d'accord, nous commençons rapidement. Vous pouvez arrêter à tout moment si ce n'est pas pour vous.
+            </p>
+          </div>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">
+              4
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">
+              Succès et soutien continu
+            </h3>
+            <p class="text-gray-700">
+              Vous maîtrisez la technologie et êtes en sécurité. Nous sommes là si vous avez besoin d'aide supplémentaire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Tarifs transparents
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Individuel -->
+        <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">🏠 Accompagnement individuel</h3>
+          <p class="text-gray-600 mb-6">Visite personnalisée chez vous</p>
+          <div class="mb-6">
+            <p class="text-4xl font-bold text-blue-600 mb-2">80$</p>
+            <p class="text-gray-600">par heure</p>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-700 mb-6">
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> À votre rythme</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> À la maison</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Jusqu'à 2 heures</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Pas d'engagement</li>
+          </ul>
+          <a href="/tarifs/" class="text-blue-600 font-semibold hover:text-blue-700">Voir tous les tarifs →</a>
+        </div>
+
+        <!-- Ateliers -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 border-2 border-blue-600">
+          <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold inline-block mb-4">
+            POPULAIRE
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">👥 Ateliers en groupe</h3>
+          <p class="text-gray-600 mb-6">Apprentissage convivial</p>
+          <div class="mb-6">
+            <p class="text-4xl font-bold text-blue-600 mb-2">15$</p>
+            <p class="text-gray-600">par personne</p>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-700 mb-6">
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> 4-8 personnes</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> 1-1.5 heures</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Ressources incluses</li>
+            <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Thèmes variés</li>
+          </ul>
+          <a href="/tarifs/" class="text-blue-600 font-semibold hover:text-blue-700">Voir tous les tarifs →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Questions fréquentes
+      </h2>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Est-ce que c'est facile d'apprendre à mon âge ?</h3>
+          <p class="text-gray-700">
+            Absolument ! Le cerveau peut apprendre à tout âge. Nous avons accompagné des gens de 65 à 95 ans avec beaucoup de succès. La clé est d'avoir quelqu'un qui explique patiemment, sans jargon.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Combien de temps avant de vraiment comprendre ?</h3>
+          <p class="text-gray-700">
+            Cela dépend de votre situation. Certains voient des résultats après 3-4 séances. D'autres prennent plus de temps. Nous allons à VOTRE rythme, pas au nôtre.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Puis-je essayer une séance avant de m'engager ?</h3>
+          <p class="text-gray-700">
+            Oui ! Commencez avec une consultation gratuite, puis une première séance. Si ce n'est pas pour vous, vous n'êtes pas obligé de continuer.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Que se passe-t-il si j'oublie ce que j'ai appris ?</h3>
+          <p class="text-gray-700">
+            C'est normal ! C'est pourquoi nous recommandons plusieurs séances. Chaque session renforce ce que vous apprenez. Nous pouvons aussi vous laisser des notes simples.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Y a-t-il un contrat ou engagement long terme ?</h3>
+          <p class="text-gray-700">
+            Non. Vous pouvez faire une seule séance. Si vous voulez continuer, nous discutons du meilleur arrangement pour vous, sans pression.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Ce que disent les aînés
+      </h2>
+
+      <div class="space-y-6">
+        <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            {[...Array(5)].map(() => (
+              <span class="text-yellow-400 text-lg">★</span>
+            ))}
+          </div>
+          <p class="text-gray-700 mb-4 italic">
+            "SeniorGeek m'a permis de comprendre comment utiliser ma tablette sans crainte. Les explications étaient claires et sans jargon. Maintenant je peux parler avec mes petits-enfants sur FaceTime !"
+          </p>
+          <p class="font-semibold text-gray-900">Mme Gérard, 72 ans</p>
+          <p class="text-gray-600 text-sm">Participante aux ateliers</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            {[...Array(5)].map(() => (
+              <span class="text-yellow-400 text-lg">★</span>
+            ))}
+          </div>
+          <p class="text-gray-700 mb-4 italic">
+            "J'avais peur de me faire arnaquer en ligne. Avec le mot de code familial et quelques conseils, je me sens beaucoup plus en sécurité. Je ne suis plus stressé quand je reçois des messages suspects."
+          </p>
+          <p class="font-semibold text-gray-900">M. Pelletier, 68 ans</p>
+          <p class="text-gray-600 text-sm">Client accompagnement individuel</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+          <div class="flex gap-1 mb-4">
+            {[...Array(5)].map(() => (
+              <span class="text-yellow-400 text-lg">★</span>
+            ))}
+          </div>
+          <p class="text-gray-700 mb-4 italic">
+            "Les ateliers m'ont redonné confiance. Je ne suis plus intimidée par mon téléphone. Et j'ai rencontré d'autres personnes qui ont les mêmes questions que moi !"
+          </p>
+          <p class="font-semibold text-gray-900">Mme Robitaille, 75 ans</p>
+          <p class="text-gray-600 text-sm">Participante aux ateliers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Banner (CRO) -->
+  <section class="py-12 bg-gradient-to-r from-green-50 to-emerald-50 border-t-4 border-green-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-6">
+        <div class="flex-shrink-0 text-3xl font-bold text-green-600">✓</div>
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            100% Satisfait ou argent remboursé
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Si vous n'êtes pas satisfait après votre première consultation,
+            nous vous remboursons intégralement. Sans questions posées.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-700">
+            <label class="flex items-center gap-2">
+              <span class="text-green-600 font-bold">✓</span>
+              Pas d'engagement long terme
+            </label>
+            <label class="flex items-center gap-2">
+              <span class="text-green-600 font-bold">✓</span>
+              Consultation gratuite
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prêt à commencer"
+    text="Appelez-nous pour un appel gratuit et sans engagement. Nous écouterons votre situation et vous recommanderons le service idéal."
+    actions={[
+      {
+        text: 'Appel gratuit maintenant',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      },
+      {
+        text: 'Nous écrire',
+        href: '/contact/',
+        type: 'secondary'
+      }
+    ]}
+  />
+</PageLayout>

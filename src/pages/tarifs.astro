@@ -1,0 +1,100 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Pricing from '../components/widgets/Pricing.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+
+const pricing = [
+  {
+    name: "🏠 Accompagnement individuel",
+    description: "Visite personnalisée chez vous",
+    price: "80 $",
+    period: "par heure",
+    features: [
+      "📚 Apprentissage à votre rythme",
+      "🏡 Dans votre environnement",
+      "⏱️ Jusqu'à deux heures par séance",
+      "🤝 Répétition sans jugement"
+    ],
+    cta: "Réserver",
+    ctaHref: "/contact/"
+  },
+  {
+    name: "👥 Ateliers en groupe",
+    description: "Apprentissage collectif et convivial",
+    price: "15 $",
+    period: "par personne",
+    features: [
+      "👨‍👩‍👧‍👦 Groupe de quatre à huit personnes",
+      "⏰ Durée d'une heure à une heure trente",
+      "📄 Ressources imprimées fournies",
+      "📅 Thèmes variés chaque mois"
+    ],
+    cta: "S'inscrire",
+    ctaHref: "/contact/",
+    highlighted: true
+  },
+  {
+    name: "🏛️ Services pour résidences",
+    description: "Programmes complets pour vos résidents",
+    price: "À partir de",
+    period: "300 $ par mois",
+    features: [
+      "📚 Deux ateliers par mois",
+      "🎨 Matériel imprimé personnalisé",
+      "🎓 Séances individuelles possibles",
+      "💰 Rabais selon nombre de résidents"
+    ],
+    cta: "Devis personnalisé",
+    ctaHref: "/contact/"
+  }
+];
+---
+
+<PageLayout
+  title="Tarifs services accompagnement aînés Quebec | SeniorGeek"
+  description="Tarifs transparents pour accompagnement aînés, ateliers en groupe et services résidences CHSLD Quebec. À partir de $15/personne. Rabais groupes disponibles."
+  heroTitle="Tarifs"
+  heroSubtitle="Des prix justes et transparents pour chacun - Services abordables pour aînés et résidences du Québec"
+>
+  <Pricing title="" subtitle="" options={pricing} />
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Questions sur les tarifs</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Puis-je payer par chèque ou virement</h3>
+          <p>Oui, nous acceptons plusieurs modes de paiement. Nous discutons des détails lors de votre première consultation.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Y a-t-il un contrat ou engagement long terme</h3>
+          <p>Non. Vous pouvez commencer avec une seule séance. Si vous voulez continuer, nous discutons du meilleur arrangement.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Les rabais en groupe s'appliquent-ils aussi pour les proches</h3>
+          <p>Oui. Si plusieurs membres d'une même famille ou ami utilisent nos services, nous offrons des rabais appropriés.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Est-ce que les frais de déplacement sont inclus</h3>
+          <p>Les frais de déplacement dépendent de la région. Nous discutons cela lors de votre consultation initiale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Besoin d'un devis personnalisé"
+    text="Contactez-nous pour connaître le tarif exact selon votre situation"
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

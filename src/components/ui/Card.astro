@@ -1,0 +1,56 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  icon?: string;
+  image?: string;
+  href?: string;
+  class?: string;
+}
+
+const { title, description, icon, image, href, class: customClass = '' } = Astro.props;
+---
+
+{
+  href ? (
+    <a href={href} class={`block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ${customClass}`}>
+      <div class="h-full flex flex-col">
+        {image && (
+          <div class="w-full h-48 overflow-hidden rounded-t-lg">
+            <img src={image} alt={title} class="w-full h-full object-cover" />
+          </div>
+        )}
+        <div class="p-6 flex-1 flex flex-col">
+          {icon && (
+            <div class="mb-3">
+              <span class={`text-4xl ${icon}`} />
+            </div>
+          )}
+          {title && <h3 class="text-xl font-semibold text-gray-900 mb-2">{title}</h3>}
+          {description && <p class="text-gray-700 text-base leading-relaxed flex-1">{description}</p>}
+          {Astro.slots.has('default') && <div class="mt-4"><slot /></div>}
+        </div>
+      </div>
+    </a>
+  ) : (
+    <div class={`bg-white rounded-lg shadow-md ${customClass}`}>
+      <div class="h-full flex flex-col">
+        {image && (
+          <div class="w-full h-48 overflow-hidden rounded-t-lg">
+            <img src={image} alt={title} class="w-full h-full object-cover" />
+          </div>
+        )}
+        <div class="p-6 flex-1 flex flex-col">
+          {icon && (
+            <div class="mb-3">
+              <span class={`text-4xl ${icon}`} />
+            </div>
+          )}
+          {title && <h3 class="text-xl font-semibold text-gray-900 mb-2">{title}</h3>}
+          {description && <p class="text-gray-700 text-base leading-relaxed flex-1">{description}</p>}
+          {Astro.slots.has('default') && <div class="mt-4"><slot /></div>}
+        </div>
+      </div>
+    </div>
+  )
+}

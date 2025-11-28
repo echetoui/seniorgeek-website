@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const risks = [
+  {
+    number: 1,
+    title: "Les faux appels d'urgence (Grands-parents)",
+    description: "Un arnaqueur prétend être votre petit-enfant en difficulté et demande de l'argent immédiatement.",
+    warning: "⚠️ Signes: Demande d'argent sans vérification, urgence pressante, demande de discrétion"
+  },
+  {
+    number: 2,
+    title: "Les faux sites bancaires (Phishing)",
+    description: "Un email ou SMS vous demande de vérifier votre compte bancaire via un lien malveillant.",
+    warning: "⚠️ Signes: Lien suspect, demande de mot de passe, adresse email non officielle"
+  },
+  {
+    number: 3,
+    title: "Les appels de support technique frauduleux",
+    description: "Une personne prétend travailler pour Microsoft ou Apple et prétend que votre ordinateur a un virus.",
+    warning: "⚠️ Signes: Appel non sollicité, demande d'accès à distance, demande de paiement"
+  },
+  {
+    number: 4,
+    title: "Les annonces de prix gagnés/loteries",
+    description: "Vous recevez une notification que vous avez gagné un prix que vous n'aviez pas demandé.",
+    warning: "⚠️ Signes: Gain inattendu, demande d'informations personnelles, frais de traitement"
+  },
+  {
+    number: 5,
+    title: "Les faux colis/douanes",
+    description: "Un message dit qu'un colis est bloqué à la douane et demande un paiement pour le débloquer.",
+    warning: "⚠️ Signes: Urgence, lien de paiement, raison vague"
+  },
+  {
+    number: 6,
+    title: "Les faux profils de rencontre (Romance scams)",
+    description: "Une belle personne vous parle en ligne et finit par demander de l'argent ou accès à votre compte.",
+    warning: "⚠️ Signes: Profil parfait, sentiments qui se développent vite, demandes d'argent"
+  },
+  {
+    number: 7,
+    title: "Les arnaques aux services publics",
+    description: "Un message prétendant être d'Hydro-Québec ou du gouvernement demande vos informations pour vérifier votre compte.",
+    warning: "⚠️ Signes: Urgence de paiement, demande de numéros de compte, ton menaçant"
+  }
+];
+
+const emailSteps = [
+  {
+    step: 1,
+    title: "Email 1: Bienvenue!",
+    content: "Merci d'avoir téléchargé notre guide. Vous recevrez des conseils pratiques chaque semaine."
+  },
+  {
+    step: 2,
+    title: "Email 2: Comment reconnaître une arnaque",
+    content: "Les 3 signes les plus évidents que vous êtes face à un arnaqueur."
+  },
+  {
+    step: 3,
+    title: "Email 3: Vos mots de passe sont-ils sûrs?",
+    content: "Guide simple pour créer et gérer des mots de passe forts."
+  },
+  {
+    step: 4,
+    title: "Email 4: L'importance du mot de code familial",
+    content: "Comment mettre en place cette protection simple mais puissante."
+  },
+  {
+    step: 5,
+    title: "Email 5: Besoin d'aide? Nos services",
+    content: "Découvrez comment nous pouvons vous aider davantage."
+  }
+];
+---
+
+<BaseLayout
+  title="Guide gratuit: 7 risques numériques des aînés | SeniorGeek"
+  description="Téléchargez notre guide gratuit détaillant les 7 risques numériques les plus courants chez les aînés et comment les éviter. Receive tips weekly."
+>
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-blue-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Téléchargez gratuitement notre guide
+        </h1>
+        <p class="text-xl text-gray-700 mb-2">
+          Les 7 risques numériques les plus courants chez les aînés
+        </p>
+        <p class="text-lg text-gray-600">
+          ... et comment les éviter
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Capture Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Side: Email Form -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Obtenez votre guide en 60 secondes
+          </h2>
+
+          <form class="space-y-4" action="/api/subscribe" method="POST" name="lead-magnet">
+            <div>
+              <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">
+                Votre prénom
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Jean"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
+                Votre email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jean@example.com"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              />
+            </div>
+
+            <div>
+              <label for="relationship" class="block text-sm font-semibold text-gray-900 mb-2">
+                Vous êtes (optionnel)
+              </label>
+              <select
+                id="relationship"
+                name="relationship"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              >
+                <option value="">-- Sélectionnez --</option>
+                <option value="aine">Un aîné cherchant à apprendre</option>
+                <option value="proche">Un proche protégeant un aîné</option>
+                <option value="residence">Directeur/Directrice de résidence</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
+            >
+              📥 Télécharger gratuitement
+            </button>
+
+            <p class="text-xs text-gray-600 text-center">
+              ✓ Pas de spam, jamais. Vous recevrez nos meilleures astuces chaque semaine.
+            </p>
+          </form>
+
+          <!-- Trust Badges -->
+          <div class="mt-8 pt-8 border-t border-gray-200">
+            <p class="text-sm text-gray-600 mb-4 font-semibold">Confiance & Sécurité</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Vos données sont 100% sécurisées
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Aucun partage avec des tiers
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-600 font-bold">✓</span>
+                Désinscription en 1 clic
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Side: Preview & Benefits -->
+        <div>
+          <!-- PDF Preview Box -->
+          <div class="bg-gray-100 rounded-lg p-8 mb-8 border-2 border-gray-300">
+            <div class="text-center">
+              <div class="text-6xl mb-4">📄</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                Guide PDF Gratuit
+              </h3>
+              <p class="text-gray-700 mb-6">
+                Facile à lire et à imprimer. Parfait pour les aînés!
+              </p>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li>✓ 7 risques expliqués simplement</li>
+                <li>✓ Signes d'alerte pour chacun</li>
+                <li>✓ Actions à prendre</li>
+                <li>✓ Ressources imprimables</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bonus Info -->
+          <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
+            <h4 class="font-bold text-gray-900 mb-3">🎁 Bonus inclus</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>✓ Checklist de sécurité imprimable</li>
+              <li>✓ Template pour créer votre mot de code familial</li>
+              <li>✓ Numéros d'urgence au Québec</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Voici ce qu'il y a dans le guide
+        </h2>
+        <p class="text-lg text-gray-600">
+          7 arnaques réelles avec des conseils pratiques pour chacune
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {
+          risks.map((risk) => (
+            <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-600 text-white font-bold text-lg">
+                    {risk.number}
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold text-gray-900 mb-2">{risk.title}</h3>
+                  <p class="text-gray-700 mb-3">{risk.description}</p>
+                  <p class="text-sm text-red-700 font-semibold">{risk.warning}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Sequence Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Vous recevrez aussi une série d'emails utiles
+        </h2>
+        <p class="text-lg text-gray-600">
+          5 semaines de conseils pratiques, un email par semaine
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {
+          emailSteps.map((email) => (
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border-2 border-blue-200">
+              <div class="text-center mb-4">
+                <div class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-blue-600 text-white font-bold">
+                  {email.step}
+                </div>
+              </div>
+              <h4 class="font-bold text-gray-900 mb-2 text-center">{email.title}</h4>
+              <p class="text-sm text-gray-700 text-center">{email.content}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 p-6 bg-green-50 rounded-lg border-l-4 border-green-600">
+        <p class="text-gray-700 text-center">
+          <span class="font-semibold">✓ Vous pouvez vous désinscrire à tout moment.</span> Aucune obligation. Nos emails contiennent uniquement des conseils utiles et des services que vous avez demandés.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-16 lg:py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Ce que disent ceux qui ont téléchargé le guide
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <div class="flex items-center gap-2 mb-4">
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "J'ai compris que j'étais proche de me faire arnaquer. Le guide m'a sauvé beaucoup d'argent!"
+          </p>
+          <p class="font-semibold text-gray-900">Mme Gérard, 68 ans</p>
+          <p class="text-sm text-gray-600">Québec</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <div class="flex items-center gap-2 mb-4">
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Parfait pour expliquer à mes parents les risques. Le PDF est facile à lire et à partager."
+          </p>
+          <p class="font-semibold text-gray-900">Jean Dupont, 42 ans</p>
+          <p class="text-sm text-gray-600">Montréal</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <div class="flex items-center gap-2 mb-4">
+            <span>⭐⭐⭐⭐⭐</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Nous avons utilisé ce guide avec nos résidents. Très utile et accessible pour tous!"
+          </p>
+          <p class="font-semibold text-gray-900">Mme Leblanc, Directrice</p>
+          <p class="text-sm text-gray-600">Résidence Soleil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+        Prêt à protéger votre famille?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        Téléchargez le guide maintenant - gratuit, aucune obligation
+      </p>
+      <a href="#top" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors">
+        ↑ Télécharger le guide
+      </a>
+    </div>
+  </section>
+</BaseLayout>

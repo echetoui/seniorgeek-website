@@ -1,0 +1,49 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items: FAQItem[];
+}
+
+const {
+  title = 'Questions fréquentes',
+  subtitle = 'Trouver les réponses à vos questions',
+  items,
+} = Astro.props;
+---
+
+<section class="py-16 lg:py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12 lg:mb-16">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      {subtitle && <p class="text-lg text-gray-700">{subtitle}</p>}
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+      {
+        items.map((item) => (
+          <details class="group border border-gray-200 rounded-lg overflow-hidden hover:border-blue-300 transition-colors">
+            <summary class="flex cursor-pointer items-center justify-between bg-gray-50 px-6 py-4 font-medium text-gray-900 group-open:bg-blue-50">
+              <span>{item.question}</span>
+              <span class="transition-transform duration-300 group-open:rotate-180">
+                <svg class="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 py-4 text-gray-700 bg-white border-t border-gray-200">
+              <p class="leading-relaxed">{item.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  text?: string;
+  actions?: Array<{ text: string; href: string; type?: string }>;
+  variant?: 'default' | 'centered' | 'image';
+  background?: 'blue' | 'white' | 'gradient';
+}
+
+const {
+  title = 'Prêt à vous accompagner',
+  subtitle,
+  text = 'Contactez-nous pour une évaluation gratuite ou posez vos questions',
+  actions = [
+    {
+      text: 'Appel gratuit',
+      href: 'tel:+15141234567',
+      type: 'primary',
+    },
+    {
+      text: 'Envoyer un message',
+      href: '/contact/',
+      type: 'secondary',
+    },
+  ],
+  variant = 'centered',
+  background = 'gradient',
+} = Astro.props;
+
+const bgStyles = {
+  blue: 'bg-blue-600',
+  white: 'bg-white border-2 border-blue-600',
+  gradient: 'bg-gradient-to-r from-blue-600 to-blue-800',
+};
+
+const textColor = background === 'white' ? 'text-gray-900' : 'text-white';
+---
+
+<section class={`py-20 lg:py-28 ${bgStyles[background]} relative overflow-hidden`}>
+  <!-- Decorative elements -->
+  {background === 'gradient' && (
+    <>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -mr-48 -mt-48"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -ml-48 -mb-48"></div>
+    </>
+  )}
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class={variant === 'centered' ? 'text-center space-y-8' : 'space-y-8'}>
+      {subtitle && (
+        <div class={`text-sm font-bold tracking-widest uppercase ${background === 'white' ? 'text-blue-600' : 'text-blue-100'}`}>
+          {subtitle}
+        </div>
+      )}
+
+      <h2 class={`text-4xl lg:text-5xl font-bold leading-tight ${textColor}`}>{title}</h2>
+
+      <p class={`text-lg leading-relaxed max-w-2xl ${background === 'white' ? 'text-gray-700' : 'text-blue-50'}`}>
+        {text}
+      </p>
+
+      <!-- Actions -->
+      <div class={`flex gap-4 pt-6 ${variant === 'centered' ? 'justify-center' : ''} flex-wrap`}>
+        {
+          actions.map((action) => (
+            <Button
+              text={action.text}
+              href={action.href}
+              type={action.type as any}
+              size="md"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

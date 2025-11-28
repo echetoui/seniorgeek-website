@@ -1,0 +1,187 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+import fraudImageAvif from '../assets/images/fraud-detection-guide.avif';
+import fraudImageWebp from '../assets/images/fraud-detection-guide.webp';
+import fraudImage from '../assets/images/fraud-detection-guide.png';
+
+const fraudTypes = [
+  {
+    title: "📞 Les faux appels d'urgence",
+    warning: "Quelqu'un prétend être un policier, un banquier ou un proche qui a besoin d'aide",
+    signs: [
+      "🚨 Urgence extrême et panique dans la voix",
+      "🔇 Demande de ne pas raccrocher ou d'appeler quelqu'un d'autre",
+      "💰 Demande rapide d'argent ou d'information personnelle",
+      "⚖️ Menaces de conséquences légales"
+    ]
+  },
+  {
+    title: "📱 Les messages suspects",
+    warning: "Un SMS ou message d'un supposé service (banque, gouvernement, livraison)",
+    signs: [
+      "🔗 Demande de cliquer sur un lien ou télécharger quelque chose",
+      "🔐 Demande de mettre à jour vos informations de compte",
+      "⚠️ Message urgent ou menace de compte désactivé",
+      "❓ Adresse ou numéro légèrement différente du vrai service"
+    ]
+  },
+  {
+    title: "💎 Les fausses annonces",
+    warning: "Une annonce de prix trop bon pour être vrai (achat, héritage, prix gagnants)",
+    signs: [
+      "💸 Gain d'argent ou achat à prix imbattable",
+      "💳 Demande de payer d'avance ou de frais",
+      "🔓 Demande d'information personnelle ou bancaire",
+      "⏱️ Pression pour agir rapidement sans réfléchir"
+    ]
+  },
+  {
+    title: "🖥️ Les arnaqueurs qui se font passer pour du support technique",
+    warning: "Quelqu'un prétend qu'il y a un virus sur votre ordinateur ou téléphone",
+    signs: [
+      "❌ Fenêtre pop-up d'erreur apparaît soudain",
+      "☎️ Appel téléphonique d'un support technique",
+      "🔓 Demande de prendre contrôle de votre appareil",
+      "💰 Demande de paiement ou d'information personnelle"
+    ]
+  },
+  {
+    title: "💔 L'escroquerie amoureuse",
+    warning: "Une personne en ligne prétend vous aimer et demande de l'argent",
+    signs: [
+      "😍 Quelqu'un d'attrayant qui vous flirte rapidement",
+      "🚫 Refus de se rencontrer ou d'utiliser vidéo",
+      "📖 Histoires qui évoluent (problèmes d'argent, urgence)",
+      "💸 Demande graduelle d'argent ou d'information bancaire"
+    ]
+  },
+  {
+    title: "💼 Les offres d'emploi frauduleuses",
+    warning: "Une offre d'emploi en ligne qui semble trop facile ou lucrative",
+    signs: [
+      "❌ Pas d'entrevue sérieuse ou rapide",
+      "💳 Demande de payer pour l'emploi ou la formation",
+      "🏦 Demande de dépôt bancaire ou information sensible",
+      "📧 Communication uniquement par email ou message"
+    ]
+  }
+];
+
+const protectionTips = [
+  "⏰ Prenez votre temps. Les arnaqueurs créent de l'urgence et de la panique.",
+  "☎️ Vérifiez l'identité. Raccrochez et appelez directement le numéro officiel du service.",
+  "🔗 N'ouvrez pas les liens. Allez directement sur le site officiel de l'organisation.",
+  "💳 N'envoyez jamais d'argent par transfert ou cartes-cadeaux. C'est irréversible.",
+  "🔐 Partagez votre mot de code familial avec un proche si vous doutez.",
+  "📞 Signalez-le. Contactez la police et les autorités concernées."
+];
+---
+
+<PageLayout
+  title="Guide complet des fraudes - Protéger aînés Québec | SeniorGeek"
+  description="Guide complet pour identifier arnaques téléphoniques, SMS suspects et fraudes amoureuses. Conseils de protection pour aînés du Québec. Faux appels, phishing, escroquerie."
+  heroTitle="Reconnaître les fraudes"
+  heroSubtitle="Apprenez à identifier les arnaqueurs et protégez-vous - Guide pour aînés du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-lg overflow-hidden shadow-lg bg-white border border-white" style="background-color: #FFFFFF;">
+        <picture>
+          <source srcset={fraudImageAvif.src} type="image/avif" />
+          <source srcset={fraudImageWebp.src} type="image/webp" />
+          <img src={fraudImage.src} alt="Guide bienveillant pour détecter les fraudes" class="w-full h-auto object-cover" style="background-color: #FFFFFF;" />
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Types d'arnaques courants</h2>
+
+      <div class="space-y-8">
+        {
+          fraudTypes.map((fraud) => (
+            <div class="bg-white rounded-lg p-8 border-l-4 border-orange-500">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">{fraud.title}</h3>
+
+              <div class="mb-4">
+                <p class="font-semibold text-gray-900 mb-1">Attention à :</p>
+                <p class="text-gray-700">{fraud.warning}</p>
+              </div>
+
+              <div>
+                <p class="font-semibold text-gray-900 mb-3">Signaux d'alerte :</p>
+                <ul class="space-y-2">
+                  {fraud.signs.map((sign) => (
+                    <li class="flex items-start gap-3">
+                      <span class="text-orange-500 font-bold text-lg">⚠</span>
+                      <span class="text-gray-700">{sign}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Conseils de protection</h2>
+
+      <div class="space-y-4">
+        {
+          protectionTips.map((tip) => (
+            <div class="flex items-start gap-4 bg-blue-50 p-4 rounded-lg">
+              <p class="text-gray-700">{tip}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Si vous pensez être victime</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Première étape</h3>
+          <p>Raccrochez ou arrêtez toute communication avec la personne. Ne donnez plus d'informations.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Appelez votre banque</h3>
+          <p>Si vous avez donné des informations bancaires ou avez transféré de l'argent, contactez votre banque immédiatement.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Signalez-le</h3>
+          <p>Contactez votre police locale et le Centre anti-fraude du Canada. Plus de signalements, plus on peut agir.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Parlez-en</h3>
+          <p>N'ayez pas honte. Les arnaqueurs sont professionnels. Parlez à un proche ou appelez-nous pour du soutien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Vous avez reçu quelque chose de suspect"
+    text="Appelez-nous pour une vérification gratuite. Nous vous aidons à identifier si c'est une arnaque."
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

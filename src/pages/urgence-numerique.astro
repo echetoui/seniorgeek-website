@@ -1,0 +1,167 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<PageLayout
+  title="Urgence numérique"
+  description="Services d'urgence rapides pour problèmes de sécurité numérique"
+  heroTitle="Urgence numérique"
+  heroSubtitle="Vous avez un problème immédiat. Nous pouvons vous aider rapidement."
+>
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Services d'urgence disponibles</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <Card
+          title="🚨 Appel urgent"
+          description="Vous venez de recevoir quelque chose de suspect et vous avez besoin d'aide maintenant"
+        >
+          <p class="text-sm text-gray-600 mb-4">
+            Appelez-nous immédiatement. Notre équipe évaluera la situation et vous donnera les conseils urgents.
+          </p>
+          <a href="tel:+15141234567" class="text-blue-600 font-semibold hover:text-blue-800">
+            Appeler maintenant →
+          </a>
+        </Card>
+
+        <Card
+          title="⚡ Vérification express"
+          description="Vous avez un message ou appel suspect et vous ne savez pas si c'est une arnaque"
+        >
+          <p class="text-sm text-gray-600 mb-4">
+            Décrivez ce qui s'est passé. Nous analysons rapidement et vous confirmons si c'est une arnaque.
+          </p>
+          <a href="/contact/" class="text-blue-600 font-semibold hover:text-blue-800">
+            Décrire la situation →
+          </a>
+        </Card>
+
+        <Card
+          title="🔐 Déblocage d'accès"
+          description="Vous ne pouvez plus accéder à votre compte ou appareil"
+        >
+          <p class="text-sm text-gray-600 mb-4">
+            Nous vous aidons à retrouver votre accès et à sécuriser vos comptes rapidement.
+          </p>
+          <a href="/contact/" class="text-blue-600 font-semibold hover:text-blue-800">
+            Demander de l'aide →
+          </a>
+        </Card>
+
+        <Card
+          title="⚠️ Perte d'information personnelle"
+          description="Vous craignez que votre information bancaire ou personnelle ait été compromise"
+        >
+          <p class="text-sm text-gray-600 mb-4">
+            Nous guidons les étapes urgentes pour protéger vos comptes et signaler à vos institutions.
+          </p>
+          <a href="/contact/" class="text-blue-600 font-semibold hover:text-blue-800">
+            Alerter nos experts →
+          </a>
+        </Card>
+      </div>
+
+      <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded">
+        <p class="text-orange-900">
+          <span class="font-bold">Important :</span> Si vous avez transféré de l'argent à un arnaqueur, contactez immédiatement votre banque. Chaque minute compte pour arrêter le transfert.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Que faire en cas d'urgence</h2>
+
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-lg flex-shrink-0">1</span>
+          <div>
+            <p class="font-semibold text-gray-900">Arrêtez immédiatement</p>
+            <p class="text-gray-700">Raccrochez l'appel ou arrêtez de répondre au message. Ne donnez plus d'information.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-lg flex-shrink-0">2</span>
+          <div>
+            <p class="font-semibold text-gray-900">Appelez votre banque</p>
+            <p class="text-gray-700">Si vous avez donné des informations bancaires, contactez votre banque au numéro sur votre carte.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-lg flex-shrink-0">3</span>
+          <div>
+            <p class="font-semibold text-gray-900">Appelez-nous</p>
+            <p class="text-gray-700">Décrivez ce qui s'est passé. Nous vous guidons sur les prochaines étapes.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-lg flex-shrink-0">4</span>
+          <div>
+            <p class="font-semibold text-gray-900">Signalez-le</p>
+            <p class="text-gray-700">Contactez votre police locale et le Centre anti-fraude du Canada.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-4">
+          <span class="font-bold text-blue-600 text-lg flex-shrink-0">5</span>
+          <div>
+            <p class="font-semibold text-gray-900">Recréez vos mots de passe</p>
+            <p class="text-gray-700">Changez tous vos mots de passe importants, particulièrement votre email et comptes bancaires.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Ressources utiles</h2>
+
+      <div class="space-y-4">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-1">Centre anti-fraude du Canada</h3>
+          <p class="text-gray-700 text-sm mb-3">Signalez les fraudes et arnaques</p>
+          <a href="tel:1-888-495-8501" class="text-blue-600 font-semibold hover:text-blue-800">
+            1-888-495-8501
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-1">Police locale</h3>
+          <p class="text-gray-700 text-sm mb-3">Signaler les crimes de fraude</p>
+          <a href="tel:911" class="text-blue-600 font-semibold hover:text-blue-800">
+            911 (Urgence) ou numéro non-urgence local
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-1">Équifax ou TransUnion</h3>
+          <p class="text-gray-700 text-sm mb-3">Vérifier votre crédit en cas de vol d'identité</p>
+          <a href="https://www.equifax.ca" class="text-blue-600 font-semibold hover:text-blue-800">
+            equifax.ca / transunion.ca
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Une urgence numérique maintenant"
+    text="Appelez-nous immédiatement. Nous sommes ici pour vous aider"
+    background="blue"
+    actions={[
+      {
+        text: 'Appeler maintenant',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

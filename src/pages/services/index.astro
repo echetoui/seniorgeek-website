@@ -1,0 +1,90 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Services from '../../components/widgets/Services.astro';
+import CallToAction from '../../components/widgets/CallToAction.astro';
+
+const services = [
+  {
+    title: "Pour les aînés",
+    description: "Des services personnalisés pour vous aider à maîtriser la technologie et rester protégé",
+    icon: "users",
+    href: "/services/aines/",
+    items: [
+      "Accompagnement individuel dans votre maison",
+      "Ateliers en groupe où vous apprenez ensemble",
+      "Jeu Vrai ou Faux pour tester vos connaissances",
+      "Mot de code familial pour la sécurité",
+      "Aide rapide disponible en moins de deux jours"
+    ]
+  },
+  {
+    title: "Pour les proches",
+    description: "Conseils et outils pour protéger vos aînés et renforcer la sécurité familiale",
+    icon: "heart",
+    href: "/services/proches/",
+    items: [
+      "Vérification des messages ou appels suspects",
+      "Conseils spécifiques pour votre situation",
+      "Système de mot de code pour alerter votre proche",
+      "Suivi régulier pour la tranquillité d'esprit",
+      "Guide imprimé de sécurité familiale"
+    ]
+  },
+  {
+    title: "Pour les résidences",
+    description: "Formations complètes et ressources pour protéger tous vos résidents",
+    icon: "building",
+    href: "/services/residences/",
+    items: [
+      "Ateliers de prévention pour les résidents",
+      "Consultations individuelles personnalisées",
+      "Matériel imprimé prêt à utiliser",
+      "Un programme chaque mois adapté",
+      "Tarifs spéciaux pour groupes de résidents",
+      "Formation pour votre équipe d'intervention"
+    ]
+  }
+];
+---
+
+<PageLayout
+  title="Services SeniorGeek"
+  description="Découvrez tous nos services pour aînés, proches et résidences"
+  heroTitle="Nos services"
+  heroSubtitle="Des solutions adaptées pour chacun"
+>
+  <Services
+    title=""
+    subtitle=""
+    services={services}
+    variant="detailed"
+  />
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Comment choisir le bon service</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <p class="text-lg leading-relaxed">
+          Chaque service est conçu pour répondre à des besoins spécifiques. Si vous êtes un aîné voulant apprendre, commencez par nos services pour aînés. Si vous êtes un proche préoccupé par la sécurité, explorez nos services pour proches. Si vous gérez une résidence, nos services pour résidences offrent une protection complète.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Vous n'êtes pas certain ? Nous offrons une évaluation gratuite de quinze minutes où nous écoutons votre situation et recommandons le meilleur service pour vous.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Besoin de conseils pour choisir"
+    text="Appelez-nous pour une consultation gratuite de quinze minutes. Aucun engagement requis."
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

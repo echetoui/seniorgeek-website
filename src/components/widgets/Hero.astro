@@ -1,0 +1,102 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  image?: string;
+  imageAvif?: string;
+  imageWebp?: string;
+  imagePng?: string;
+  actions?: Array<{ text: string; href: string; type?: string }>;
+}
+
+const {
+  title = 'Protéger et accompagner les aînés du Québec dans leur vie numérique',
+  subtitle = "SeniorGeek aide les aînés et leurs familles à éviter les arnaques, à comprendre les pièges modernes et à utiliser leurs appareils avec confiance, à la maison ou en résidence.",
+  tagline = "Un service pensé pour les familles et les résidences du Québec",
+  image,
+  imageAvif,
+  imageWebp,
+  imagePng,
+  actions = [
+    {
+      text: 'Prendre un moment avec nous',
+      href: 'tel:+15141234567',
+      type: 'primary',
+    },
+    {
+      text: 'Faire le point ensemble',
+      href: '/contact/',
+      type: 'secondary',
+    },
+  ],
+} = Astro.props;
+
+// Use new format props if available, fall back to legacy image prop
+const imgSrc = image || imagePng;
+const imgAvif = imageAvif;
+const imgWebp = imageWebp;
+---
+
+<section class="relative py-20 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class={`grid grid-cols-1 ${image ? 'lg:grid-cols-2' : ''} gap-12 items-center`}>
+      <!-- Content -->
+      <div class="space-y-6">
+        {tagline && (
+          <div class="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+            {tagline}
+          </div>
+        )}
+
+        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+          {title}
+        </h1>
+
+        <p class="text-xl text-gray-700 leading-relaxed max-w-2xl font-medium">
+          {subtitle}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          {
+            actions.map((action) => (
+              <Button
+                text={action.text}
+                href={action.href}
+                type={action.type as 'primary' | 'secondary'}
+                size="lg"
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Image -->
+      {
+        imgSrc && (
+          <div class="relative hidden lg:block">
+            <div class="relative w-full aspect-square rounded-lg overflow-hidden shadow-xl">
+              <picture>
+                {imgAvif && <source srcset={imgAvif} type="image/avif" />}
+                {imgWebp && <source srcset={imgWebp} type="image/webp" />}
+                <img
+                  src={imgSrc}
+                  alt="SeniorGeek illustration"
+                  class="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="auto"
+                />
+              </picture>
+            </div>
+            {/* Decorative elements */}
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-200 rounded-full blur-2xl opacity-50" />
+            <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-40" />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

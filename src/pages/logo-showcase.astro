@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/common/Logo.astro';
+import LogoFull from '../components/common/LogoFull.astro';
+---
+
+<BaseLayout
+  title="Logo SeniorGeek - Showcase"
+  description="Galerie et documentation du logo SeniorGeek"
+>
+  <section class="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 text-center">
+        Logo SeniorGeek
+      </h1>
+      <p class="text-lg text-gray-700 text-center max-w-2xl mx-auto">
+        Un logo moderne et chaleureux qui représente la bienveillance et l'aide pour les aînés du Québec.
+      </p>
+    </div>
+  </section>
+
+  <!-- Logo Complet Horizontal -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Logo Complet</h2>
+
+      <div class="space-y-12">
+        <!-- Grande taille -->
+        <div class="flex flex-col items-center gap-6">
+          <div class="bg-gray-50 rounded-lg p-8 w-full">
+            <div class="flex justify-center">
+              <LogoFull size="lg" />
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm">Taille large (64px height)</p>
+        </div>
+
+        <!-- Taille moyenne -->
+        <div class="flex flex-col items-center gap-6">
+          <div class="bg-gray-50 rounded-lg p-8 w-full">
+            <div class="flex justify-center">
+              <LogoFull size="md" />
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm">Taille médium (48px height)</p>
+        </div>
+
+        <!-- Petite taille -->
+        <div class="flex flex-col items-center gap-6">
+          <div class="bg-gray-50 rounded-lg p-8 w-full">
+            <div class="flex justify-center">
+              <LogoFull size="sm" />
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm">Taille petite (32px height)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Marque (Mini) -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Logo Marque</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- White background -->
+        <div class="bg-white rounded-lg p-8 flex flex-col items-center gap-6">
+          <div>
+            <Logo />
+          </div>
+          <p class="text-gray-600 text-sm text-center">Sur fond blanc</p>
+        </div>
+
+        <!-- Gray background -->
+        <div class="bg-gray-100 rounded-lg p-8 flex flex-col items-center gap-6">
+          <div>
+            <Logo />
+          </div>
+          <p class="text-gray-600 text-sm text-center">Sur fond gris</p>
+        </div>
+
+        <!-- Blue background -->
+        <div class="bg-blue-600 rounded-lg p-8 flex flex-col items-center gap-6">
+          <div class="text-white">
+            <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(32, 32) rotate(-15)">
+                <path
+                  d="M 0,-6
+                     C -9,-15 -21,-15 -21,-3
+                     C -21,8 -9,20 0,28
+                     C 9,20 21,8 21,-3
+                     C 21,-15 9,-15 0,-6 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+            </svg>
+          </div>
+          <p class="text-white text-sm text-center">Cœur blanc sur bleu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Icône Cœur Seule -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Icône Cœur</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- 32px -->
+        <div class="bg-gray-50 rounded-lg p-8 flex flex-col items-center gap-4">
+          <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60a5fa" />
+                <stop offset="100%" style="stop-color:#2563eb" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(32, 32) rotate(-15)">
+              <path
+                d="M 0,-6 C -9,-15 -21,-15 -21,-3 C -21,8 -9,20 0,28 C 9,20 21,8 21,-3 C 21,-15 9,-15 0,-6 Z"
+                fill="none"
+                stroke="url(#hg1)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <p class="text-gray-600 text-xs text-center">32px</p>
+        </div>
+
+        <!-- 48px -->
+        <div class="bg-gray-50 rounded-lg p-8 flex flex-col items-center gap-4">
+          <svg class="w-12 h-12" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60a5fa" />
+                <stop offset="100%" style="stop-color:#2563eb" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(32, 32) rotate(-15)">
+              <path
+                d="M 0,-6 C -9,-15 -21,-15 -21,-3 C -21,8 -9,20 0,28 C 9,20 21,8 21,-3 C 21,-15 9,-15 0,-6 Z"
+                fill="none"
+                stroke="url(#hg2)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <p class="text-gray-600 text-xs text-center">48px</p>
+        </div>
+
+        <!-- 64px -->
+        <div class="bg-gray-50 rounded-lg p-8 flex flex-col items-center gap-4">
+          <svg class="w-16 h-16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60a5fa" />
+                <stop offset="100%" style="stop-color:#2563eb" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(32, 32) rotate(-15)">
+              <path
+                d="M 0,-6 C -9,-15 -21,-15 -21,-3 C -21,8 -9,20 0,28 C 9,20 21,8 21,-3 C 21,-15 9,-15 0,-6 Z"
+                fill="none"
+                stroke="url(#hg3)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <p class="text-gray-600 text-xs text-center">64px</p>
+        </div>
+
+        <!-- 96px -->
+        <div class="bg-gray-50 rounded-lg p-8 flex flex-col items-center gap-4">
+          <svg class="w-24 h-24" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg4" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60a5fa" />
+                <stop offset="100%" style="stop-color:#2563eb" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(32, 32) rotate(-15)">
+              <path
+                d="M 0,-6 C -9,-15 -21,-15 -21,-3 C -21,8 -9,20 0,28 C 9,20 21,8 21,-3 C 21,-15 9,-15 0,-6 Z"
+                fill="none"
+                stroke="url(#hg4)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <p class="text-gray-600 text-xs text-center">96px</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spécifications -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Spécifications</h2>
+
+      <div class="space-y-8">
+        <div class="bg-white rounded-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Couleurs</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="flex flex-col gap-2">
+              <div class="w-full h-16 bg-blue-600 rounded"></div>
+              <p class="text-sm font-mono text-gray-600">#1e40af</p>
+              <p class="text-xs text-gray-500">Fond</p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="w-full h-16 bg-sky-400 rounded"></div>
+              <p class="text-sm font-mono text-gray-600">#60a5fa</p>
+              <p class="text-xs text-gray-500">Gradient clair</p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="w-full h-16 bg-blue-600 rounded"></div>
+              <p class="text-sm font-mono text-gray-600">#2563eb</p>
+              <p class="text-xs text-gray-500">Gradient foncé</p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="w-full h-16 bg-white border border-gray-200 rounded"></div>
+              <p class="text-sm font-mono text-gray-600">#FFFFFF</p>
+              <p class="text-xs text-gray-500">Texte</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Typographie</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Police :</strong> Inter (sans-serif géométrique)</li>
+            <li><strong>Poids :</strong> 500 (Medium)</li>
+            <li><strong>Taille :</strong> 32px (dans viewBox 320x80)</li>
+            <li><strong>Espacement :</strong> -0.5px (letter-spacing)</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Cœur</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Trait :</strong> 2px</li>
+            <li><strong>Arrondi :</strong> round (linecap & linejoin)</li>
+            <li><strong>Rotation :</strong> -15° (légère inclinaison)</li>
+            <li><strong>Gradient :</strong> Dégradé bleu clair → bleu moyen (linéaire)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

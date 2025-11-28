@@ -1,0 +1,46 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  heroTitle = title,
+  heroSubtitle,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+>
+  {/* Page Hero Section */}
+  <section class="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          {heroTitle}
+        </h1>
+        {heroSubtitle && (
+          <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+            {heroSubtitle}
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {/* Main Content */}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <slot />
+  </div>
+</BaseLayout>

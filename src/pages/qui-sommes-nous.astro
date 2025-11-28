@@ -1,0 +1,84 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/ui/Card.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+
+const team = [
+  {
+    name: 'Nom',
+    role: 'Fondateur et expert en sécurité numérique',
+    description: "Passion pour l'inclusion numérique et la protection des aînés"
+  },
+  {
+    name: 'Nom',
+    role: 'Coordinatrice des ateliers',
+    description: "Expérience en animation de groupes d'aînés depuis dix ans"
+  }
+];
+---
+
+<PageLayout
+  title="Qui sommes-nous - L'équipe et expertise de SeniorGeek"
+  description="Rencontrez l'équipe de SeniorGeek. Des experts en sécurité numérique et accompagnement des aînés du Québec."
+  heroTitle="Qui sommes-nous"
+  heroSubtitle="Une équipe dévouée à la protection des aînés du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Pourquoi nous avons créé SeniorGeek</h2>
+
+      <div class="space-y-6 text-gray-700 mb-12">
+        <p class="text-lg leading-relaxed">
+          SeniorGeek est né d'une observation simple. Trop d'aînés du Québec ont peur de la technologie. Pas parce qu'ils ne peuvent pas l'apprendre. Mais parce que personne ne leur a expliqué correctement.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          En même temps, les arnaqueurs ciblent les aînés de façon systématique. Les fausses voix, les images truquées, les faux messages d'urgence. Ces tactiques fonctionnent parce que peu de gens les expliquent clairement.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          C'est pourquoi nous avons créé SeniorGeek. Un service pensé pour les aînés, les proches et les résidences. Avec un langage simple. Sans jargon. Juste de vrai accompagnement.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Notre mission</h2>
+
+      <div class="bg-blue-50 border-l-4 border-blue-600 p-8 rounded mb-12">
+        <p class="text-lg text-gray-900">
+          Protéger et accompagner les aînés du Québec dans leur vie numérique en offrant une éducation claire, bienveillante et adaptée à leurs besoins.
+        </p>
+      </div>
+
+      <h2 id="team" class="text-3xl font-bold text-gray-900 mb-8">Notre équipe</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          team.map((member) => (
+            <Card title={member.name} description={member.description}>
+              <p class="text-sm text-blue-600 font-semibold">{member.role}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prêt à en savoir plus sur notre approche?"
+    subtitle="Questions?"
+    text="Notre équipe est disponible pour discuter de comment nous pouvons accompagner les aînés de votre communauté avec bienveillance et expertise."
+    background="gradient"
+    actions={[
+      {
+        text: 'Nous contacter',
+        href: '/contact/',
+        type: 'primary'
+      },
+      {
+        text: 'Voir notre équipe',
+        href: '#team',
+        type: 'secondary'
+      }
+    ]}
+  />
+</PageLayout>

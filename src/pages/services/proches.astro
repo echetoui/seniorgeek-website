@@ -1,0 +1,248 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import CallToAction from '../../components/widgets/CallToAction.astro';
+import Card from '../../components/ui/Card.astro';
+import serviceImageAvif from '../../assets/images/service-family-support.avif';
+import serviceImageWebp from '../../assets/images/service-family-support.webp';
+import serviceImage from '../../assets/images/service-family-support.png';
+
+const services = [
+  {
+    title: "🔍 Vérification des messages suspects",
+    description: "Vous recevez un message ou appel douteux de votre proche. Nous vous aidons à identifier si c'est une arnaque",
+    items: [
+      "📱 Analyse rapide des messages reçus",
+      "⚠️ Identification des signes d'arnaque",
+      "💬 Conseils immédiats sur les actions à prendre",
+      "🚨 Service d'urgence disponible"
+    ]
+  },
+  {
+    title: "💡 Conseils personnalisés",
+    description: "Des recommandations adaptées à la situation spécifique de votre proche",
+    items: [
+      "📊 Évaluation de son niveau technologique",
+      "🔐 Recommandations de paramètres de sécurité",
+      "📱 Conseils sur les applications à utiliser ou éviter",
+      "📋 Plan d'action personnalisé"
+    ]
+  },
+  {
+    title: "🔐 Mot de code familial",
+    description: "Un système simple et efficace pour que votre proche vous alerte en cas de doute",
+    items: [
+      "🔑 Création d'un code secret",
+      "📞 À utiliser lors d'appels ou messages suspects",
+      "👨‍👩‍👧‍👦 Toute la famille le connaît pour réagir",
+      "✅ Gratuit et facile à mémoriser"
+    ]
+  },
+  {
+    title: "👁️ Suivi régulier",
+    description: "Des points de contact réguliers pour maintenir la sécurité et l'apprentissage",
+    items: [
+      "📅 Vérification mensuelle de la sécurité",
+      "🔔 Mises à jour sur les nouvelles arnaques",
+      "🔧 Ajustement du système si nécessaire",
+      "😌 Tranquillité d'esprit constante"
+    ]
+  }
+];
+
+const impacts = [
+  {
+    title: "🛡️ Prévention des arnaques",
+    description: "Vous identifiez les fraudes avant qu'elles ne coûtent de l'argent à votre proche"
+  },
+  {
+    title: "🔒 Sécurité renforcée",
+    description: "Votre proche utilise la technologie de façon plus sûre et confiante"
+  },
+  {
+    title: "😌 Tranquillité d'esprit",
+    description: "Vous savez que quelqu'un d'expert veille aussi sur la sécurité de votre proche"
+  },
+  {
+    title: "❤️ Relation améliorée",
+    description: "Moins de conflits sur la technologie, plus de temps quality avec votre proche"
+  }
+];
+---
+
+<PageLayout
+  title="Protéger vos aînés - Services pour proches à Quebec | SeniorGeek"
+  description="Protégez vos aînés et proches contre les fraudes numériques. Conseils, vérification de messages suspects et outils de sécurité pour familles du Québec."
+  heroTitle="Services pour les proches"
+  heroSubtitle="Protégez vos aînés et maintenez une relation digitale saine - Sécurité pour familles du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-lg overflow-hidden shadow-lg bg-white border border-white" style="background-color: #FFFFFF;">
+        <picture>
+          <source srcset={serviceImageAvif.src} type="image/avif" />
+          <source srcset={serviceImageWebp.src} type="image/webp" />
+          <img src={serviceImage.src} alt="Conversation rassurante entre famille" class="w-full h-auto object-cover" style="background-color: #FFFFFF;" />
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Nos services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          services.map((service) => (
+            <Card title={service.title} description={service.description}>
+              <ul class="space-y-2 text-sm text-gray-600">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Pourquoi protéger votre proche</h2>
+
+      <div class="space-y-6 text-gray-700 mb-8">
+        <p class="text-lg leading-relaxed">
+          Les arnaqueurs ciblent spécifiquement les aînés. Ils connaissent les tactiques qui fonctionnent. Vous pouvez aider votre proche en le soutenant avec de bonnes connaissances et des outils simples.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Nos services offrent une couche supplémentaire de protection sans surcharger votre proche avec du jargon technique.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mb-6">Impacts de nos services</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          impacts.map((impact) => (
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h4 class="font-semibold text-gray-900 mb-2">{impact.title}</h4>
+              <p class="text-gray-700">{impact.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Comment ça marche</h2>
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">1</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Appel gratuit (15 minutes)</h3>
+            <p class="text-gray-700">Décrivez la situation de votre proche. Nous écoutons et recommandons les meilleures protections.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">2</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Mise en place personnalisée</h3>
+            <p class="text-gray-700">Nous établissons un système adapté - mot de code, conseils spécifiques, outils de vérification.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">3</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Soutien continu</h3>
+            <p class="text-gray-700">Vous nous contactez quand votre proche a une question. Nous vérifions les messages suspects ensemble.</p></div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0"><div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 text-white font-bold text-lg">4</div></div>
+          <div><h3 class="text-xl font-bold text-gray-900 mb-2">Tranquillité d'esprit</h3>
+            <p class="text-gray-700">Votre proche est protégé. Vous savez qu'il a quelqu'un pour l'aider en cas de doute.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Services pour proches</h2>
+      <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">📋 Service complet mensuel</h3>
+        <p class="text-gray-600 mb-6">Protection complète et soutien continu</p>
+        <div class="mb-6">
+          <p class="text-4xl font-bold text-blue-600 mb-2">À partir 50$/mois</p>
+          <p class="text-gray-600">Flexible selon vos besoins</p>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-700 mb-6">
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Vérification messages suspects</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Mot de code familial</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Conseils personnalisés</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Suivi régulier</li>
+        </ul>
+        <a href="/tarifs/" class="text-blue-600 font-semibold hover:text-blue-700">Voir tous les tarifs →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (CRO) -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Questions fréquentes</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Mon proche refusera-t-il ce service ?</h3>
+          <p class="text-gray-700">Beaucoup de proches apprécient le soutien. Présentez-le comme une protection supplémentaire, pas comme de la surveillance. Nous pouvons aussi en parler directement avec eux.</p>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Combien ça coûte réellement ?</h3>
+          <p class="text-gray-700">C'est bien moins cher que si votre proche se fait arnaquer de 10,000$ ou plus. Nous offrons des options souples, même une vérification ponctuelle si besoin.</p>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Pouvez-vous vraiment identifier une arnaque ?</h3>
+          <p class="text-gray-700">Oui. Nous avons des années d'expérience. 90% des arnaques ont des signes évidents que nous reconnaissons immédiatement.</p>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-gray-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Et si je reçois un appel douteux maintenant ?</h3>
+          <p class="text-gray-700">Vous pouvez appeler notre service d'urgence. Nous vous aiderons à déterminer si c'est une arnaque et comment réagir immédiatement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Banner (CRO) -->
+  <section class="py-12 bg-gradient-to-r from-green-50 to-emerald-50 border-t-4 border-green-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-6">
+        <div class="flex-shrink-0 text-3xl font-bold text-green-600">✓</div>
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">100% Satisfait ou argent remboursé</h3>
+          <p class="text-gray-700 mb-4">Si vous n'êtes pas satisfait, nous remboursons intégralement. Nous misons sur votre tranquillité d'esprit.</p>
+          <div class="flex flex-col sm:flex-row gap-4 text-sm text-gray-700">
+            <label class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span>Pas d'engagement long terme</label>
+            <label class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span>Consultation gratuite</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Protégez votre proche dès maintenant"
+    text="Appelez-nous pour comprendre comment nous pouvons soutenir votre proche. Une consultation gratuite et sans engagement."
+    actions={[
+      {
+        text: 'Appel gratuit maintenant',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      },
+      {
+        text: 'Nous écrire',
+        href: '/contact/',
+        type: 'secondary'
+      }
+    ]}
+  />
+</PageLayout>

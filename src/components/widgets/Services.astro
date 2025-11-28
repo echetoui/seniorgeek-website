@@ -1,0 +1,59 @@
+---
+import Card from '../ui/Card.astro';
+
+interface Service {
+  title: string;
+  description: string;
+  icon?: string;
+  href?: string;
+  items?: string[];
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  services: Service[];
+  variant?: 'default' | 'detailed';
+}
+
+const {
+  title = 'Nos Services',
+  subtitle = 'Des solutions adaptées à chacun',
+  services,
+  variant = 'default',
+} = Astro.props;
+---
+
+<section id="services" class="py-16 lg:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12 lg:mb-16">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      {subtitle && <p class="text-lg text-gray-700 max-w-2xl mx-auto">{subtitle}</p>}
+    </div>
+
+    <!-- Services Grid -->
+    <div class={`grid grid-cols-1 ${variant === 'detailed' ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-6`}>
+      {
+        services.map((service) => (
+          <Card
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+            href={service.href}
+          >
+            {service.items && (
+              <ul class="space-y-2 text-sm text-gray-600">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

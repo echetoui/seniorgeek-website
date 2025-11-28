@@ -1,0 +1,154 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+import diversityImageAvif from '../assets/images/group-diverse.avif';
+import diversityImageWebp from '../assets/images/group-diverse.webp';
+import diversityImage from '../assets/images/group-diverse.png';
+
+const timeline = [
+  {
+    year: '2023',
+    title: '🚀 Fondation de SeniorGeek',
+    description: "Une réponse à un besoin réel. Trop d'aînés ont peur de la technologie et trop subissent des fraudes."
+  },
+  {
+    year: '2024',
+    title: '🎉 Lancement des services',
+    description: 'Nous avons commencé avec les aînés et les proches. Réponse incroyable de la communauté.'
+  },
+  {
+    year: '2024',
+    title: '🏢 Expansion aux résidences',
+    description: 'Après demandes des résidences, nous avons créé des programmes adaptés aux établissements.'
+  },
+  {
+    year: '2025',
+    title: '🌟 Visée 2025',
+    description: 'Rejoindre plus de résidences et familles du Québec pour créer une meilleure culture numérique.'
+  }
+];
+---
+
+<PageLayout
+  title="À propos de SeniorGeek"
+  description="L'histoire et la vision de SeniorGeek"
+  heroTitle="À propos de nous"
+  heroSubtitle="Une mission pour protéger les aînés du Québec"
+>
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Notre trajectoire</h2>
+
+      <div class="space-y-8">
+        {
+          timeline.map((item) => (
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-600 text-white font-bold">
+                  {item.year.slice(-2)}
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p class="text-gray-700 mt-2">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-lg overflow-hidden shadow-lg bg-white border border-white" style="background-color: #FFFFFF;">
+        <picture>
+          <source srcset={diversityImageAvif.src} type="image/avif" />
+          <source srcset={diversityImageWebp.src} type="image/webp" />
+          <img src={diversityImage.src} alt="Groupe diversifié apprenant ensemble" class="w-full h-auto object-cover" style="background-color: #FFFFFF;" />
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Chiffres clés</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <p class="text-5xl font-bold text-blue-600 mb-2">500 +</p>
+          <p class="text-gray-700">Aînés aidés</p>
+        </div>
+        <div class="text-center">
+          <p class="text-5xl font-bold text-blue-600 mb-2">50 +</p>
+          <p class="text-gray-700">Familles accompagnées</p>
+        </div>
+        <div class="text-center">
+          <p class="text-5xl font-bold text-blue-600 mb-2">15 +</p>
+          <p class="text-gray-700">Résidences partenaires</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Ce qui nous motive</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <p class="text-lg leading-relaxed">
+          Nous avons entendu trop d'histoires. Une grand-mère qui ne peut plus parler avec ses petits-enfants par vidéo. Un grand-père qui craint d'ouvrir ses emails. Une mère qui s'inquiète que son parent soit victime d'une arnaque.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Ce n'est pas parce que les aînés sont incapables. C'est parce que personne ne leur a expliqué correctement.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Nous avons décidé de changer cela. Avec du langage simple, de la bienveillance et de vrais gens qui comprennent vos besoins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Notre engagement</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <div class="bg-white p-6 rounded-lg border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-900 mb-2">Accessibilité</h3>
+          <p>Nos services seront toujours accessibles, peu importe votre revenu ou situation géographique.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-900 mb-2">Qualité</h3>
+          <p>Nous maintenons les plus hauts standards de qualité dans notre accompagnement.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-900 mb-2">Confiance</h3>
+          <p>Vos données et votre privacité sont sacrées. Nous les protégeons au mieux de nos capacités.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-900 mb-2">Transparence</h3>
+          <p>Nous sommes honnêtes sur ce que nous offrons et comment nous le faisons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Rejoignez notre mission"
+    text="Aidez-nous à protéger plus d'aînés du Québec. Parlez-nous de SeniorGeek."
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

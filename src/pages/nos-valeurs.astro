@@ -1,0 +1,97 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/ui/Card.astro';
+import CallToAction from '../components/widgets/CallToAction.astro';
+
+const values = [
+  {
+    title: 'Langage simple',
+    description: 'Nous expliquons tout sans jargon technique. Si vous ne comprenez pas, nous réexpliquons autrement.',
+    icon: 'sparkles'
+  },
+  {
+    title: 'Respect et bienveillance',
+    description: "Votre âge ou votre manque d'expérience ne nous inquiètent pas. Nous écoutons et adaptons notre approche.",
+    icon: 'heart'
+  },
+  {
+    title: "Sécurité d'abord",
+    description: "Nous mettons votre sécurité, celle de votre famille et de vos données au cœur de chaque décision.",
+    icon: 'shield'
+  },
+  {
+    title: 'Accessibilité',
+    description: 'Nos services sont conçus pour être faciles à utiliser, peu importe votre expérience technologique.',
+    icon: 'check'
+  },
+  {
+    title: 'Confiance et transparence',
+    description: 'Nous sommes honnêtes sur ce que nous pouvons faire et comment cela fonctionnera pour vous.',
+    icon: 'sparkles'
+  },
+  {
+    title: 'Engagement communautaire',
+    description: 'Nous travaillons avec les résidences, les organismes et les familles pour renforcer la sécurité numérique collective.',
+    icon: 'users'
+  }
+];
+---
+
+<PageLayout
+  title="Nos valeurs"
+  description="Les principes fondamentaux de SeniorGeek"
+  heroTitle="Nos valeurs"
+  heroSubtitle="Ce qui nous guide dans chaque interaction"
+>
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          values.map((value) => (
+            <Card title={value.title} description={value.description} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Nos engagements envers vous</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <h3 class="font-bold text-gray-900 mb-2">Écoute active</h3>
+          <p>Nous écoutons vraiment vos préoccupations et vos besoins avant de recommander une solution.</p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <h3 class="font-bold text-gray-900 mb-2">Responsabilité</h3>
+          <p>Nous assumons la responsabilité de nos recommandations et sommes disponibles pour expliquer davantage au besoin.</p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <h3 class="font-bold text-gray-900 mb-2">Continuité du soutien</h3>
+          <p>Notre relation ne s'arrête pas après votre première visite. Nous sommes là pour vous soutenir à long terme.</p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded">
+          <h3 class="font-bold text-gray-900 mb-2">Respect de votre rythme</h3>
+          <p>Il n'y a pas de pression. Vous apprenez à votre rythme, avec ou sans technologie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prêt à nous rencontrer"
+    text="Apprenez-en plus sur notre approche lors d'une consultation gratuite"
+    actions={[
+      {
+        text: 'Appel gratuit',
+        href: 'tel:+15141234567',
+        type: 'primary'
+      }
+    ]}
+  />
+</PageLayout>

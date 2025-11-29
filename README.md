@@ -307,3 +307,108 @@ MIT License - See LICENSE file
 **Last Updated**: 28 novembre 2025
 **Status**: Phase 2 Complete ✅
 **Next**: Phase 3 Planning (case studies, video testimonials, live chat)
+
+## 🌐 Déploiement - Vercel (Production Ready)
+
+### Architecture
+
+```
+GitHub Repository (Main)
+         ↓
+    Webhook Vercel
+         ↓
+   Vercel Build (Astro)
+         ↓
+   Compression (HTML/CSS/JS)
+         ↓
+   CDN Global Vercel
+         ↓
+   Production: seniorgeek-website.vercel.app
+```
+
+### Workflow Déploiement
+
+1. **Développement Local**
+   ```bash
+   npm run dev
+   # Tester à http://localhost:4321
+   ```
+
+2. **Commit et Push**
+   ```bash
+   git add .
+   git commit -m "feat: description"
+   git push origin feature-branch
+   ```
+
+3. **Pull Request**
+   - Vercel crée une preview URL
+   - Test automatique avant merge
+
+4. **Merge dans Main**
+   ```bash
+   git checkout main
+   git merge feature-branch
+   git push origin main
+   ```
+
+5. **Vercel Deploy Automatique**
+   - Webhook GitHub déclenche le build
+   - Astro build (~20s)
+   - Compression activée
+   - Deploy en production
+
+### URLs
+
+- **Production**: https://seniorgeek-website-dhm81jrxo-elyeschetoui-cybernowios-projects.vercel.app
+- **Vercel Dashboard**: https://vercel.com/elyeschetoui-cybernowios-projects/seniorgeek-website
+- **GitHub**: https://github.com/echetoui/seniorgeek-website
+
+### Commandes Vercel
+
+```bash
+# Déployer localement
+vercel deploy
+
+# Deploy en production
+vercel deploy --prod
+
+# Voir les logs
+vercel logs
+
+# Redéployer
+vercel redeploy
+
+# Inspecter un déploiement
+vercel inspect
+```
+
+### Performance
+
+- **Build Time**: ~20-30 secondes
+- **Pages**: 18 HTML pages
+- **Compression**: HTML/CSS/SVG minifiés
+- **CDN**: Global Vercel CDN
+- **Uptime**: 99.95% SLA
+
+### Sécurité
+
+✅ HTTPS automatique
+✅ SSL/TLS gratuit
+✅ DDoS protection
+✅ Security headers (CORS, CSP, etc.)
+✅ Environment variables protégés
+
+## 📚 Documentation Complète
+
+- `DEPLOYMENT.md` - Guide détaillé du déploiement
+- `PHASE_2_COMPLETION.md` - Phase 2 CRO report
+- `CONTRIBUTING.md` - Comment contribuer
+- `vercel.json` - Configuration Vercel
+- `.github/workflows/build.yml` - CI/CD Workflow
+
+---
+
+**Deployment Status**: ✅ Production Ready  
+**Platform**: Vercel  
+**Last Updated**: 28 novembre 2025

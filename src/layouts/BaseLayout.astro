@@ -308,34 +308,115 @@ const ogUrl = canonical || Astro.url.href;
       }
 
       function createMobileMenu(header) {
-        const navElement = header.querySelector('nav .flex-1');
         const mobileMenu = document.createElement('div');
         mobileMenu.id = 'mobile-menu';
-        mobileMenu.className = 'md:hidden hidden absolute top-full left-0 right-0 bg-white shadow-lg z-40 py-4 px-4';
+        mobileMenu.className = 'md:hidden hidden absolute top-full left-0 right-0 bg-white shadow-lg z-40 max-h-[80vh] overflow-y-auto';
         mobileMenu.setAttribute('aria-label', 'Menu mobile');
 
-        if (navElement) {
-          mobileMenu.innerHTML = navElement.innerHTML;
-        }
+        // Menu structure avec tous les liens
+        const menuHTML = `
+          <div class="py-4 px-4 space-y-2">
+            <!-- Qui nous sommes -->
+            <div class="border-b border-gray-200">
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="0">
+                <span>Qui nous sommes</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="0">
+                <a href="/qui-sommes-nous/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Qui nous sommes</a>
+                <a href="/nos-valeurs/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Nos valeurs</a>
+              </div>
+            </div>
 
-        const actions = document.createElement('div');
-        actions.className = 'flex flex-col gap-2 mt-4 pt-4 border-t border-gray-200';
+            <!-- Services -->
+            <div class="border-b border-gray-200">
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="1">
+                <span>Services</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="1">
+                <a href="/services/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors font-medium">Services</a>
+                <a href="/services/aines/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Pour les aînés</a>
+                <a href="/services/proches/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Pour les proches</a>
+                <a href="/services/residences/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Pour les résidences</a>
+              </div>
+            </div>
 
-        const callBtn = document.createElement('a');
-        callBtn.href = 'tel:+15141234567';
-        callBtn.className = 'block text-center px-4 py-2 rounded-lg bg-gray-100 text-gray-900 hover:bg-gray-200 transition-colors';
-        callBtn.textContent = 'Appel gratuit';
+            <!-- Ressources -->
+            <div class="border-b border-gray-200">
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="2">
+                <span>Ressources</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="2">
+                <a href="/blog/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Blog</a>
+                <a href="/fraudes/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Reconnaître les fraudes</a>
+                <a href="/urgence-numerique/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Urgence numérique</a>
+              </div>
+            </div>
 
-        const contactBtn = document.createElement('a');
-        contactBtn.href = '/contact/';
-        contactBtn.className = 'block text-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium';
-        contactBtn.textContent = 'Nous contacter';
+            <!-- Tarifs -->
+            <div class="border-b border-gray-200">
+              <a href="/tarifs/" class="block px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg">Tarifs</a>
+            </div>
 
-        actions.appendChild(callBtn);
-        actions.appendChild(contactBtn);
-        mobileMenu.appendChild(actions);
+            <!-- À propos -->
+            <div class="border-b border-gray-200">
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="3">
+                <span>À propos</span>
+                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="3">
+                <a href="/a-propos/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">À propos</a>
+                <a href="/partenariat/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Partenariat</a>
+              </div>
+            </div>
+          </div>
 
+          <!-- Actions buttons -->
+          <div class="flex flex-col gap-2 py-4 px-4 border-t border-gray-200">
+            <a href="tel:+15141234567" class="block text-center px-4 py-3 rounded-lg bg-gray-100 text-gray-900 hover:bg-gray-200 transition-colors font-medium">Appel gratuit</a>
+            <a href="/contact/" class="block text-center px-4 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium">Nous contacter</a>
+          </div>
+        `;
+
+        mobileMenu.innerHTML = menuHTML;
         header.appendChild(mobileMenu);
+
+        // Ajouter les event listeners pour les toggles
+        const toggleButtons = mobileMenu.querySelectorAll('.mobile-menu-toggle');
+        toggleButtons.forEach((button) => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const toggleIndex = button.getAttribute('data-toggle');
+            const submenu = mobileMenu.querySelector(`[data-submenu="${toggleIndex}"]`);
+            const icon = button.querySelector('svg');
+
+            if (submenu) {
+              submenu.classList.toggle('hidden');
+              icon.classList.toggle('rotate-180');
+            }
+          });
+        });
+
+        // Fermer les sous-menus au clic sur un lien
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            const submenus = mobileMenu.querySelectorAll('.mobile-submenu');
+            const icons = mobileMenu.querySelectorAll('.mobile-menu-toggle svg');
+            submenus.forEach((submenu) => submenu.classList.add('hidden'));
+            icons.forEach((icon) => icon.classList.remove('rotate-180'));
+          });
+        });
+
         return mobileMenu;
       }
 

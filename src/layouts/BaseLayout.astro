@@ -318,11 +318,8 @@ const ogUrl = canonical || Astro.url.href;
           <div class="py-4 px-4 space-y-2">
             <!-- Qui nous sommes -->
             <div class="border-b border-gray-200">
-              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="0">
-                <span>Qui nous sommes</span>
-                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg" data-toggle="0">
+                Qui nous sommes
               </button>
               <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="0">
                 <a href="/qui-sommes-nous/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Qui nous sommes</a>
@@ -332,11 +329,8 @@ const ogUrl = canonical || Astro.url.href;
 
             <!-- Services -->
             <div class="border-b border-gray-200">
-              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="1">
-                <span>Services</span>
-                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg" data-toggle="1">
+                Services
               </button>
               <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="1">
                 <a href="/services/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors font-medium">Services</a>
@@ -348,11 +342,8 @@ const ogUrl = canonical || Astro.url.href;
 
             <!-- Ressources -->
             <div class="border-b border-gray-200">
-              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="2">
-                <span>Ressources</span>
-                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg" data-toggle="2">
+                Ressources
               </button>
               <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="2">
                 <a href="/blog/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">Blog</a>
@@ -368,11 +359,8 @@ const ogUrl = canonical || Astro.url.href;
 
             <!-- À propos -->
             <div class="border-b border-gray-200">
-              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg flex items-center justify-between" data-toggle="3">
-                <span>À propos</span>
-                <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+              <button class="mobile-menu-toggle w-full text-left px-4 py-3 text-gray-900 font-medium hover:bg-blue-50 transition-colors rounded-lg" data-toggle="3">
+                À propos
               </button>
               <div class="mobile-submenu hidden pl-4 space-y-1 pb-2" data-submenu="3">
                 <a href="/a-propos/" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">À propos</a>
@@ -398,11 +386,9 @@ const ogUrl = canonical || Astro.url.href;
             e.preventDefault();
             const toggleIndex = button.getAttribute('data-toggle');
             const submenu = mobileMenu.querySelector(`[data-submenu="${toggleIndex}"]`);
-            const icon = button.querySelector('svg');
 
             if (submenu) {
               submenu.classList.toggle('hidden');
-              icon.classList.toggle('rotate-180');
             }
           });
         });
@@ -411,9 +397,7 @@ const ogUrl = canonical || Astro.url.href;
         mobileMenu.querySelectorAll('a').forEach((link) => {
           link.addEventListener('click', () => {
             const submenus = mobileMenu.querySelectorAll('.mobile-submenu');
-            const icons = mobileMenu.querySelectorAll('.mobile-menu-toggle svg');
             submenus.forEach((submenu) => submenu.classList.add('hidden'));
-            icons.forEach((icon) => icon.classList.remove('rotate-180'));
           });
         });
 
